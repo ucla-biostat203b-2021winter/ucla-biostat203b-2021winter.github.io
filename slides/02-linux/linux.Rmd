@@ -25,15 +25,16 @@ Linux is _the_ most common platform for scientific computing and deployment of d
 
 - Scalability: portable devices (Android, iOS), laptops, servers, clusters, and super computers.
     - E.g. UCLA Hoffmann2 cluster runs on Linux; most machines in cloud (AWS, Azure, GCP) run on Linux.  
+    
 - Cost: it's free!
 
 ## [Distributions of Linux](http://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg)
 
 - Debian/Ubuntu is a popular choice for personal computers.
 
-- RHEL/CentOS is popular on servers.
+- RHEL/CentOS is popular on servers. (In December 2020, Red Hat terminated the development of CentOS Linux distribution.)
 
-- The teaching server for this class runs CentOS 7.
+- The teaching server for this class runs CentOS 7. UCLA Hoffman2 cluster runs CentOS 6.10 (as of 2020-01-03).
 
 - MacOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to MacOS terminal as well. Windows/DOS, unfortunately, is a totally different breed.
 
@@ -103,7 +104,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - Username completion: `cd ~[TAB][TAB]`.
 
-- Hostname completion `ssh hwachou@[TAB][TAB]`.
+- Hostname completion `ssh huazhou@[TAB][TAB]`.
 
 - It can also be customized to auto-complete other stuff such as options and command's arguments. Google `bash completion` for more information.
 
@@ -134,12 +135,12 @@ man ls
 
 ## Move around the file system
 
-- `pwd` prints absolute path to the current working directory:
+- Where am I? `pwd` prints absolute path to the current working directory:
     ```{bash}
     pwd
     ```
 
-- `ls` lists contents of a directory:  
+- What's in the current director? `ls` lists contents of a directory:  
     ```{bash}
     ls
     ```
@@ -447,9 +448,9 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 ## IDE (Integrated Development Environment)
 
-- Statisticians write a lot of code. Critical to adopt a good IDE that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.
+- Statisticians/data scientists write a lot of code. Critical to adopt a good IDE that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.
 
-- R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.
+- **R Studio**, Eclipse, Emacs, Matlab, Visual Studio, etc.
 
 # Processes
 
