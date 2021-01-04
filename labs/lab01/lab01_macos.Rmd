@@ -1,0 +1,100 @@
+---
+title: "Lab 1: SSH, Keys, R/RStudio, and git clone on MacOS"
+author: "Elvis Cui, Chris German, Hua Zhou"
+date: "Jan 7, 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This tutorial is for Mac users. For Windows users, first read the [tutorial]() to install Git for Windows (Git Bash), then most of bash commands will work in Git Bash.
+
+# Connect from your Mac to teaching server
+
+1. SSH client on MacOS. 
+    - MacOS: open the `Terminal` app.  
+    - If necessary, change default shell to Bash by following command in Terminal
+    ```{bash, eval=F}
+    chsh -s /bin/bash
+    ```
+    - Close the Terminal window and reopen it.
+    
+2. Connect to the teaching server. On MacOS Terminal:  
+    ```{bash, eval=F}
+    ssh USERNAME@server.ucla-biostat-203b.com
+    ```
+Replace `USERNAME` in the command by your actual user name (your email name in MyUCLA). If you cannot connect, you may not have an account. Ask TA or instructor for help.
+
+3. Change password on teaching server
+    ```{bash, eval=F}
+    passwd
+    ```
+
+# Install R and RStudio on your own machine. 
+
+1. Install R v3.x.x or later. <https://ftp.osuosl.org/pub/cran/> 
+
+2. Install RStudio Desktop (Open Source Edition). <https://rstudio.com/products/rstudio/#Desktop> 
+
+# Git
+
+Check whether `git` command is available in Terminal. If not, follow instructions at <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git> `Installing on macOS` section to install it.
+
+# `git clone` and `git pull` course materials
+
+1. On whichever machine that has `git` installed, e.g., your Mac Terminal or teaching server, you can obtain the 203B course material by command
+```{bash, eval=F}
+git clone git@github.com:ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git
+```
+
+2. The Git repository <https://github.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io> is frequently updated. To sync your git clone with the current repo., first enter your local repo directory
+```{bash, eval=F}
+cd /PATH/TO/ucla-biostat203b-2021winter.github.io
+```
+then 
+```{bash, eval=F}
+git pull
+```
+If you have made changes to the local repo, then the two commits need to be merged. 
+
+3. Besides command line, we can also use RStudio to perform git clone and many other git operations. To git clone a repository, in RStudio `File` -> `New Project...` -> `Version Control` -> `Git`, then copy the **git address** (not **HTTPS** address) `git@github.com:ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git` to the `Repository URL:`. 
+
+# Access RStudio on the teaching server
+
+Open your browser and enter address <http://server.ucla-biostat-203b.com:8787> to use RStudio **on the teaching server**.
+
+# SSH keys
+
+1. First check whether you already have keys.
+```{bash}
+ls -al ~/.ssh
+```
+If you don't have `~/.ssh` folder, that means you have never used SSH before.
+
+2. If no SSH keys yet, generate a pair of SSH RSA keys
+    - Method 1: generate keys on MacOS Terminal or Windows Git Bash. Follow [instructions in lecture notes](https://ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.html#steps-to-generate-keys).  
+    - Method 2: Use RStudio to generate keys. Tools -> Global Options... -> Git/SVN. 
+Using either method, make sure keys are in the default location `~/.ssh/`
+
+3. Make sure the permission for the key files are correct.   
+    - On MacOS terminal: 
+        - The permission for the `~/.ssh` folder should be `700 (drwx------)`. 
+        - The permission for the private key `~/.ssh/id_rsa` should be `600 (-rw-------)`. 
+        - The permission of the public key `~/.ssh/id_rsa.pub` should be `644 (-rw-r--r--)`.
+    - On Window Git Bash, the following permission could also work: 
+        - The permission for the `~/.ssh` folder can be `755 (drwxr-xr-x)`. 
+        - The permission for the private key `~/.ssh/id_rsa` can be `644 (-rw-r--r--)`. 
+        - The permission of the public key `~/.ssh/id_rsa.pub` can be `644 (-rw-r--r--)`.
+    
+4. On the teaching server, put the same pair of keys under `~/.ssh`. 
+    - The permission for the `~/.ssh` folder should be `700 (drwx------)`. 
+    - The permission for the private key `~/.ssh/id_rsa` should be `600 (-rw-------)`.
+    - The permission of the public key `~/.ssh/id_rsa.pub` should be `644 (-rw-r--r--)`. 
+    - The `authorized_keys` file should contain the public key (cannot duplicate) and its permission should be `600 (-rw-------)`.
+
+5. Now try to SSH into the teaching server from your Mac **without password**. 
+```{bash, eval=F}
+ssh USERNAME@server.ucla-biostat-203b.com
+```
