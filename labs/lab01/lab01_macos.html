@@ -379,6 +379,7 @@ summary {
 </div>
 
 
+<p>This tutorial is for Mac users. For Windows users, first read the <a href>tutorial</a> to install Git for Windows (Git Bash), then most of bash commands will work in Git Bash.</p>
 <div id="connect-from-your-mac-to-teaching-server" class="section level1">
 <h1>Connect from your Mac to teaching server</h1>
 <ol style="list-style-type: decimal">
@@ -437,22 +438,6 @@ summary {
 <li>First check whether you already have keys.</li>
 </ol>
 <pre class="bash"><code>ls -al ~/.ssh</code></pre>
-<pre><code>## total 120
-## drwx------  15 huazhou  staff    480 Jan  3 14:59 .
-## drwxr-xr-x+ 93 huazhou  staff   2976 Jan  3 14:59 ..
-## -r--------@  1 huazhou  staff   1692 Jan 11  2017 amazon_ec2.pem
-## -rw-r--r--   1 huazhou  staff    172 Feb 24  2020 config
-## -r--------   1 huazhou  staff   1766 Aug 20  2017 github_rsa
-## -r--------   1 huazhou  staff    401 Aug 20  2017 github_rsa.pub
-## -r--------   1 huazhou  staff    668 Jan 11  2017 id_dsa
-## -r--------   1 huazhou  staff    619 Jan 11  2017 id_dsa.pub
-## -rw-------   1 huazhou  staff   1811 Jan 15  2019 id_rsa
-## -rw-r--r--   1 huazhou  staff    389 Jan 15  2019 id_rsa.pub
-## -r--------   1 huazhou  staff   1675 Jan  8  2018 id_rsa_old
-## -r--------   1 huazhou  staff    389 Jan  8  2018 id_rsa_old.pub
-## -rw-------   1 huazhou  staff   1675 Nov 18 14:26 id_rsa_ua
-## -rw-r--r--   1 huazhou  staff    413 Nov 18 14:26 id_rsa_ua.pub
-## -rw-r--r--   1 huazhou  staff  10537 Jan  3 14:59 known_hosts</code></pre>
 <p>If you don’t have <code>~/.ssh</code> folder, that means you have never used SSH before.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>If no SSH keys yet, generate a pair of SSH RSA keys

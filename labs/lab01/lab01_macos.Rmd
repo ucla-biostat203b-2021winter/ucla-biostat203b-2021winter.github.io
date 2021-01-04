@@ -68,7 +68,7 @@ Open your browser and enter address <http://server.ucla-biostat-203b.com:8787> t
 # SSH keys
 
 1. First check whether you already have keys.
-```{bash}
+```{bash, eval=F}
 ls -al ~/.ssh
 ```
 If you don't have `~/.ssh` folder, that means you have never used SSH before.
