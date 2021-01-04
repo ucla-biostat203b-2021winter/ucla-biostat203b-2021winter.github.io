@@ -8,7 +8,7 @@ title: Biostat 203B
 ## Lecture
 
 Tue (lecture) 3pm-5:50pm @ Zoom <https://ucla.zoom.us/j/98086071073>   
-Thu (lecture/lab) 3pm-3:50pm @ Zoom <https://ucla.zoom.us/j/98086071073>   
+Thu (lab) 3pm-4:50pm @ Zoom <https://ucla.zoom.us/j/98086071073>   
 
 ## Instructor
 
@@ -20,7 +20,7 @@ Office hours: Tue/Thu 2pm-3pm @ Zoom <https://ucla.zoom.us/j/98086071073>
 
 ## Teaching Assistant
 
-Chris German <germc3@ucla.edu> and Jiaheng Cai <jihcai@ucla.edu>     
+Chris German <germc3@ucla.edu> and Elvis Cui <elviscuihan@ucla.edu>     
 Office hours: Thu 3p-5p @ Zoom <https://ucla.zoom.us/j/98086071073>  
 
 ## Course Description
