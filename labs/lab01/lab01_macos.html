@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Elvis Cui, Chris German, Hua Zhou" />
+<meta name="author" content="Chris German, Hua Zhou" />
 
 
 <title>Lab 1: SSH, Keys, R/RStudio, and git clone on MacOS</title>
@@ -373,26 +373,24 @@ summary {
 
 
 <h1 class="title toc-ignore">Lab 1: SSH, Keys, R/RStudio, and git clone on MacOS</h1>
-<h4 class="author">Elvis Cui, Chris German, Hua Zhou</h4>
+<h4 class="author">Chris German, Hua Zhou</h4>
 <h4 class="date">Jan 7, 2021</h4>
 
 </div>
 
 
-<p>This tutorial is for Mac users. For Windows users, first read the <a href>tutorial</a> to install Git for Windows (Git Bash), then most of bash commands will work in Git Bash.</p>
+<p>This tutorial is for Mac users. For Windows users, please first read the <a href="https://ucla-biostat203b-2021winter.github.io/labs/lab01/lab01_windows.html">tutorial</a> to install <code>Git for Windows</code>, which ships with <code>Git Bash</code>, then most bash commands in this tutorial will work in <code>Git Bash</code>.</p>
 <div id="connect-from-your-mac-to-teaching-server" class="section level1">
 <h1>Connect from your Mac to teaching server</h1>
 <ol style="list-style-type: decimal">
 <li><p>SSH client on MacOS.</p>
 <ul>
-<li>MacOS: open the <code>Terminal</code> app.<br />
+<li>MacOS: open the <code>Terminal</code> app. You can find <code>Terminal</code> from <code>LaunchPad</code> -&gt; <code>Other</code>, or from <code>Spotlight Search</code> (type Terminal). For convenience, you can pin the Terminal program to the Dock.<br />
 </li>
 <li>If necessary, change default shell to Bash by following command in Terminal</li>
 </ul>
 <pre class="bash"><code>chsh -s /bin/bash</code></pre>
-<ul>
-<li>Close the Terminal window and reopen it.</li>
-</ul></li>
+<p>Close the Terminal window and reopen it.</p></li>
 <li><p>Connect to the teaching server. On MacOS Terminal:</p>
 <pre class="bash"><code>ssh USERNAME@server.ucla-biostat-203b.com</code></pre>
 <p>Replace <code>USERNAME</code> in the command by your actual user name (your email name in MyUCLA). If you cannot connect, you may not have an account. Ask TA or instructor for help.</p></li>
@@ -430,7 +428,7 @@ summary {
 </div>
 <div id="access-rstudio-on-the-teaching-server" class="section level1">
 <h1>Access RStudio on the teaching server</h1>
-<p>Open your browser and enter address <a href="http://server.ucla-biostat-203b.com:8787" class="uri">http://server.ucla-biostat-203b.com:8787</a> to use RStudio <strong>on the teaching server</strong>.</p>
+<p>Open your browser and enter address <a href="http://server.ucla-biostat-203b.com:8787" class="uri">http://server.ucla-biostat-203b.com:8787</a> to use RStudio <strong>on the teaching server</strong>. Log in using your credential for the teaching server.</p>
 </div>
 <div id="ssh-keys" class="section level1">
 <h1>SSH keys</h1>
@@ -444,7 +442,7 @@ summary {
 <ul>
 <li>Method 1: generate keys on MacOS Terminal or Windows Git Bash. Follow <a href="https://ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.html#steps-to-generate-keys">instructions in lecture notes</a>.<br />
 </li>
-<li>Method 2: Use RStudio to generate keys. Tools -&gt; Global Options… -&gt; Git/SVN. Using either method, make sure keys are in the default location <code>~/.ssh/</code></li>
+<li>Method 2: Use RStudio to generate keys. <code>Tools</code> -&gt; <code>Global Options...</code> -&gt; <code>Git/SVN</code>. Using either method, make sure keys are in the default location <code>~/.ssh/</code></li>
 </ul></li>
 <li>Make sure the permission for the key files are correct.
 <ul>
@@ -468,7 +466,7 @@ summary {
 <li>The permission of the public key <code>~/.ssh/id_rsa.pub</code> should be <code>644 (-rw-r--r--)</code>.</li>
 <li>The <code>authorized_keys</code> file should contain the public key (cannot duplicate) and its permission should be <code>600 (-rw-------)</code>.</li>
 </ul></li>
-<li>Now try to SSH into the teaching server from your Mac <strong>without password</strong>.</li>
+<li>Now try to SSH into the teaching server from your Mac. If keys are set up correctly, you should be able to connect to the teaching server <strong>without entering password</strong>.</li>
 </ol>
 <pre class="bash"><code>ssh USERNAME@server.ucla-biostat-203b.com</code></pre>
 </div>

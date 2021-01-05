@@ -1,6 +1,6 @@
 ---
 title: "Lab 1: SSH, Keys, R/RStudio, and git clone on MacOS"
-author: "Elvis Cui, Chris German, Hua Zhou"
+author: "Chris German, Hua Zhou"
 date: "Jan 7, 2021"
 output: html_document
 ---
@@ -9,17 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This tutorial is for Mac users. For Windows users, first read the [tutorial]() to install Git for Windows (Git Bash), then most of bash commands will work in Git Bash.
+This tutorial is for Mac users. For Windows users, please first read the [tutorial](https://ucla-biostat203b-2021winter.github.io/labs/lab01/lab01_windows.html) to install `Git for Windows`, which ships with `Git Bash`, then most bash commands in this tutorial will work in `Git Bash`.
 
 # Connect from your Mac to teaching server
 
 1. SSH client on MacOS. 
-    - MacOS: open the `Terminal` app.  
+    - MacOS: open the `Terminal` app. You can find `Terminal` from `LaunchPad` -> `Other`, or from `Spotlight Search` (type Terminal). For convenience, you can pin the Terminal program to the Dock.   
     - If necessary, change default shell to Bash by following command in Terminal
     ```{bash, eval=F}
     chsh -s /bin/bash
     ```
-    - Close the Terminal window and reopen it.
+    Close the Terminal window and reopen it.
     
 2. Connect to the teaching server. On MacOS Terminal:  
     ```{bash, eval=F}
@@ -63,7 +63,7 @@ If you have made changes to the local repo, then the two commits need to be merg
 
 # Access RStudio on the teaching server
 
-Open your browser and enter address <http://server.ucla-biostat-203b.com:8787> to use RStudio **on the teaching server**.
+Open your browser and enter address <http://server.ucla-biostat-203b.com:8787> to use RStudio **on the teaching server**. Log in using your credential for the teaching server. 
 
 # SSH keys
 
@@ -75,7 +75,7 @@ If you don't have `~/.ssh` folder, that means you have never used SSH before.
 
 2. If no SSH keys yet, generate a pair of SSH RSA keys
     - Method 1: generate keys on MacOS Terminal or Windows Git Bash. Follow [instructions in lecture notes](https://ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.html#steps-to-generate-keys).  
-    - Method 2: Use RStudio to generate keys. Tools -> Global Options... -> Git/SVN. 
+    - Method 2: Use RStudio to generate keys. `Tools` -> `Global Options...` -> `Git/SVN`. 
 Using either method, make sure keys are in the default location `~/.ssh/`
 
 3. Make sure the permission for the key files are correct.   
@@ -94,7 +94,7 @@ Using either method, make sure keys are in the default location `~/.ssh/`
     - The permission of the public key `~/.ssh/id_rsa.pub` should be `644 (-rw-r--r--)`. 
     - The `authorized_keys` file should contain the public key (cannot duplicate) and its permission should be `600 (-rw-------)`.
 
-5. Now try to SSH into the teaching server from your Mac **without password**. 
+5. Now try to SSH into the teaching server from your Mac. If keys are set up correctly, you should be able to connect to the teaching server **without entering password**.
 ```{bash, eval=F}
 ssh USERNAME@server.ucla-biostat-203b.com
 ```
