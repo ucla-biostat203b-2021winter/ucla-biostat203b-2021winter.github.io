@@ -58,5 +58,7 @@ Source: [IBM](http://www.ibmbigdatahub.com/infographic/four-vs-big-data).
 
 - Read [syllabus](https://ucla-biostat203b-2021winter.github.io/syllabus/syllabus.html) and [schedule](https://ucla-biostat203b-2021winter.github.io/schedule/schedule.html) for a tentative list of topics and course logistics.
 
+- Fill out a short survey at <https://www.surveymonkey.com/r/F9NL7H9>. It helps me better tailor the course to your background.
+
 ## References
 
