@@ -417,7 +417,7 @@ summary {
 </ul></li>
 <li><a href="#secure-shell-ssh">Secure shell (SSH)</a><ul>
 <li><a href="#ssh">SSH</a></li>
-<li><a href="#use-keys-over-password">Use keys over password</a></li>
+<li><a href="#advantages-of-keys-over-password">Advantages of keys over password</a></li>
 <li><a href="#key-authentication">Key authentication</a></li>
 <li><a href="#steps-to-generate-keys">Steps to generate keys</a></li>
 <li><a href="#transfer-files-between-machines">Transfer files between machines</a></li>
@@ -434,6 +434,7 @@ summary {
 </ul>
 </div>
 
+<p>This html is knitted from RMarkdown on the teaching server.</p>
 <div id="why-linux" class="section level2">
 <h2>Why Linux</h2>
 <p>Linux is <em>the</em> most common platform for scientific computing and deployment of data science tools.</p>
@@ -978,6 +979,10 @@ tree -d -L 2 /</code></pre>
 ├── proc
 │   ├── 1
 │   ├── 10
+│   ├── 10267
+│   ├── 10293
+│   ├── 10336
+│   ├── 10337
 │   ├── 11
 │   ├── 12
 │   ├── 13
@@ -1005,12 +1010,12 @@ tree -d -L 2 /</code></pre>
 │   ├── 23
 │   ├── 24
 │   ├── 252
-│   ├── 25245
 │   ├── 253
 │   ├── 254
 │   ├── 255
 │   ├── 256
 │   ├── 257
+│   ├── 25760
 │   ├── 258
 │   ├── 259
 │   ├── 26
@@ -1020,11 +1025,13 @@ tree -d -L 2 /</code></pre>
 │   ├── 263
 │   ├── 28
 │   ├── 29
+│   ├── 29164
 │   ├── 30
+│   ├── 30658
 │   ├── 31
+│   ├── 31317
 │   ├── 32
 │   ├── 32087
-│   ├── 32104
 │   ├── 326
 │   ├── 33
 │   ├── 34
@@ -1038,6 +1045,7 @@ tree -d -L 2 /</code></pre>
 │   ├── 4
 │   ├── 431
 │   ├── 437
+│   ├── 4541
 │   ├── 456
 │   ├── 49
 │   ├── 495
@@ -1059,29 +1067,18 @@ tree -d -L 2 /</code></pre>
 │   ├── 62
 │   ├── 63
 │   ├── 65
-│   ├── 6744
+│   ├── 6667
+│   ├── 6670
+│   ├── 6671
 │   ├── 682
-│   ├── 6839
-│   ├── 6894
-│   ├── 6907
-│   ├── 6909
 │   ├── 7
-│   ├── 7063
-│   ├── 7067
-│   ├── 7068
+│   ├── 7092
 │   ├── 78
 │   ├── 8
-│   ├── 8043
-│   ├── 8065
-│   ├── 8079
-│   ├── 8080
-│   ├── 8356
-│   ├── 8508
-│   ├── 8665
-│   ├── 8711
-│   ├── 8754
-│   ├── 8755
+│   ├── 8680
 │   ├── 9
+│   ├── 9076
+│   ├── 9430
 │   ├── 961
 │   ├── 962
 │   ├── 963
@@ -1093,7 +1090,7 @@ tree -d -L 2 /</code></pre>
 │   ├── irq
 │   ├── net -&gt; self/net
 │   ├── scsi
-│   ├── self -&gt; 8755
+│   ├── self -&gt; 10337
 │   ├── sys
 │   ├── sysvipc
 │   └── tty
@@ -1116,6 +1113,7 @@ tree -d -L 2 /</code></pre>
 │   ├── NetworkManager
 │   ├── plymouth
 │   ├── rstudio-server
+│   ├── screen
 │   ├── sepermit
 │   ├── setrans
 │   ├── sudo
@@ -1143,8 +1141,9 @@ tree -d -L 2 /</code></pre>
 │   └── power
 ├── tmp
 │   ├── hsperfdata_root
-│   ├── RtmpKe6zb2
-│   ├── RtmpVr0vY5
+│   ├── RtmpacwUPG
+│   ├── RtmpuWMemp
+│   ├── ssh-YoiFDgVZo7
 │   └── systemd-private-952e28a7cd164fcab412b507014b1cbf-chronyd.service-nvljyz
 ├── usr
 │   ├── bin
@@ -1180,7 +1179,7 @@ tree -d -L 2 /</code></pre>
     ├── tmp
     └── yp
 
-383 directories</code></pre></li>
+381 directories</code></pre></li>
 </ul>
 </div>
 <div id="move-around-the-file-system" class="section level2">
@@ -1217,8 +1216,8 @@ Vi_Cheat_Sheet.pdf</code></pre></li>
 -rw-rw-r--. 1 huazhou huazhou   11662 Jan  4 00:21 linux_directory_structure.png
 -rw-rw-r--. 1 huazhou huazhou   42472 Jan  4 00:21 linux_filepermission_oct.png
 -rw-rw-r--. 1 huazhou huazhou  102188 Jan  4 00:21 linux_filepermission.png
--rw-rw-r--. 1 huazhou huazhou 2700399 Jan  4 01:06 linux.html
--rw-rw-r--. 1 huazhou huazhou   22986 Jan  4 01:06 linux.Rmd
+-rw-rw-r--. 1 huazhou huazhou 2700156 Jan  5 05:56 linux.html
+-rw-rw-r--. 1 huazhou huazhou   23187 Jan  5 05:57 linux.Rmd
 -rw-rw-r--. 1 huazhou huazhou     381 Jan  4 00:21 meanEst.R
 -rw-rw-r--. 1 huazhou huazhou  141962 Jan  4 00:21 Richard_Stallman_2013.png
 -rw-rw-r--. 1 huazhou huazhou     498 Jan  4 00:21 runSim.R
@@ -1227,7 +1226,7 @@ Vi_Cheat_Sheet.pdf</code></pre></li>
 <li><p><code>ls -al</code> lists all contents of a directory, including those start with <code>.</code> (hidden folders):</p>
 <pre class="bash"><code>ls -al</code></pre>
 <pre><code>total 4312
-drwxrwxr-x. 2 huazhou huazhou    4096 Jan  4 01:06 .
+drwxrwxr-x. 2 huazhou huazhou    4096 Jan  5 05:56 .
 drwxrwxr-x. 4 huazhou huazhou      71 Jan  4 00:21 ..
 -rw-rw-r--. 1 huazhou huazhou     258 Jan  4 00:21 autoSim.R
 -rw-rw-r--. 1 huazhou huazhou  110345 Jan  4 00:21 Emacs_Reference_Card.pdf
@@ -1237,10 +1236,10 @@ drwxrwxr-x. 4 huazhou huazhou      71 Jan  4 00:21 ..
 -rw-rw-r--. 1 huazhou huazhou   11662 Jan  4 00:21 linux_directory_structure.png
 -rw-rw-r--. 1 huazhou huazhou   42472 Jan  4 00:21 linux_filepermission_oct.png
 -rw-rw-r--. 1 huazhou huazhou  102188 Jan  4 00:21 linux_filepermission.png
--rw-rw-r--. 1 huazhou huazhou 2700399 Jan  4 01:06 linux.html
--rw-rw-r--. 1 huazhou huazhou   22986 Jan  4 01:06 linux.Rmd
+-rw-rw-r--. 1 huazhou huazhou 2700156 Jan  5 05:56 linux.html
+-rw-rw-r--. 1 huazhou huazhou   23187 Jan  5 05:57 linux.Rmd
 -rw-rw-r--. 1 huazhou huazhou     381 Jan  4 00:21 meanEst.R
--rw-r--r--. 1 huazhou huazhou    4093 Jan  4 01:06 .RData
+-rw-r--r--. 1 huazhou huazhou    4096 Jan  5 05:56 .RData
 -rw-rw-r--. 1 huazhou huazhou  141962 Jan  4 00:21 Richard_Stallman_2013.png
 -rw-rw-r--. 1 huazhou huazhou     498 Jan  4 00:21 runSim.R
 -rw-rw-r--. 1 huazhou huazhou  469335 Jan  4 00:21 screenshot_top.png
@@ -1526,14 +1525,14 @@ grep &#39;CentOS&#39; linux.Rmd</code></pre>
     sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</code></pre></li>
 <li><p>Show matching line numbers:</p>
 <pre class="bash"><code>grep -n &#39;CentOS&#39; linux.Rmd</code></pre>
-<pre><code>35:- RHEL/CentOS is popular on servers. (In December 2020, Red Hat terminated the development of CentOS Linux distribution.)
-37:- The teaching server for this class runs CentOS 7. UCLA Hoffman2 cluster runs CentOS 6.10 (as of 2020-01-03).
-324:- Show lines that contain string `CentOS`:
-327:    grep &#39;CentOS&#39; linux.Rmd
-332:    grep &#39;CentOS&#39; *.Rmd
-337:    grep -n &#39;CentOS&#39; linux.Rmd
-354:- Replace `CentOS` by `RHEL` in a text file:
-356:    sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</code></pre></li>
+<pre><code>37:- RHEL/CentOS is popular on servers. (In December 2020, Red Hat terminated the development of CentOS Linux distribution.)
+39:- The teaching server for this class runs CentOS 7. UCLA Hoffman2 cluster runs CentOS 6.10 (as of 2020-01-03).
+326:- Show lines that contain string `CentOS`:
+329:    grep &#39;CentOS&#39; linux.Rmd
+334:    grep &#39;CentOS&#39; *.Rmd
+339:    grep -n &#39;CentOS&#39; linux.Rmd
+356:- Replace `CentOS` by `RHEL` in a text file:
+358:    sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</code></pre></li>
 <li><p>Find all files in current directory with <code>.png</code> extension:</p>
 <pre class="bash"><code>ls | grep &#39;.png$&#39;</code></pre>
 <pre><code>key_authentication_1.png
@@ -1545,7 +1544,7 @@ Richard_Stallman_2013.png
 screenshot_top.png</code></pre></li>
 <li><p>Find all directories in the current directory:</p>
 <pre class="bash"><code>ls -al | grep &#39;^d&#39;</code></pre>
-<pre><code>drwxrwxr-x. 2 huazhou huazhou    4096 Jan  4 01:06 .
+<pre><code>drwxrwxr-x. 2 huazhou huazhou    4096 Jan  5 05:56 .
 drwxrwxr-x. 4 huazhou huazhou      71 Jan  4 00:21 ..</code></pre></li>
 </ul>
 </div>
@@ -1865,21 +1864,22 @@ elviscuihan,vip</code></pre></li>
 <li><p>Each process has Process ID (PID), Username (UID), Parent process ID (PPID), Time and data process started (STIME), time running (TIME), etc.</p>
 <pre class="bash"><code>ps</code></pre>
 <pre><code>  PID TTY          TIME CMD
- 8665 ?        00:00:01 rsession
- 8711 ?        00:00:00 R
- 8824 ?        00:00:00 sh
- 8825 ?        00:00:00 ps</code></pre></li>
+ 4541 ?        00:00:16 rsession
+ 6670 ?        00:00:00 sshd
+10293 ?        00:00:00 R
+10406 ?        00:00:00 sh
+10407 ?        00:00:00 ps</code></pre></li>
 <li><p>All current running processes:</p>
 <pre class="bash"><code>ps -eaf</code></pre>
 <pre><code>UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 Jan03 ?        00:00:03 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+root         1     0  0 Jan03 ?        00:00:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
 root         2     0  0 Jan03 ?        00:00:00 [kthreadd]
 root         4     2  0 Jan03 ?        00:00:00 [kworker/0:0H]
-root         5     2  0 Jan03 ?        00:00:00 [kworker/u8:0]
+root         5     2  0 Jan03 ?        00:00:01 [kworker/u8:0]
 root         6     2  0 Jan03 ?        00:00:00 [ksoftirqd/0]
 root         7     2  0 Jan03 ?        00:00:00 [migration/0]
 root         8     2  0 Jan03 ?        00:00:00 [rcu_bh]
-root         9     2  0 Jan03 ?        00:00:05 [rcu_sched]
+root         9     2  0 Jan03 ?        00:00:15 [rcu_sched]
 root        10     2  0 Jan03 ?        00:00:00 [lru-add-drain]
 root        11     2  0 Jan03 ?        00:00:00 [watchdog/0]
 root        12     2  0 Jan03 ?        00:00:00 [watchdog/1]
@@ -1916,7 +1916,7 @@ root        62     2  0 Jan03 ?        00:00:00 [kaluad]
 root        63     2  0 Jan03 ?        00:00:00 [kpsmoused]
 root        65     2  0 Jan03 ?        00:00:00 [ipv6_addrconf]
 root        78     2  0 Jan03 ?        00:00:00 [deferwq]
-root       138     2  0 Jan03 ?        00:00:01 [kauditd]
+root       138     2  0 Jan03 ?        00:00:08 [kauditd]
 root       192     2  0 Jan03 ?        00:00:00 [virtscsi-scan]
 root       193     2  0 Jan03 ?        00:00:00 [scsi_eh_0]
 root       195     2  0 Jan03 ?        00:00:00 [scsi_tmf_0]
@@ -1931,76 +1931,73 @@ root       258     2  0 Jan03 ?        00:00:00 [xfs-cil/sda2]
 root       259     2  0 Jan03 ?        00:00:00 [xfs-reclaim/sda]
 root       260     2  0 Jan03 ?        00:00:00 [xfs-log/sda2]
 root       261     2  0 Jan03 ?        00:00:00 [xfs-eofblocks/s]
-root       262     2  0 Jan03 ?        00:00:10 [xfsaild/sda2]
-root       263     2  0 Jan03 ?        00:00:00 [kworker/0:1H]
-root       326     1  0 Jan03 ?        00:00:07 /usr/lib/systemd/systemd-journald
+root       262     2  0 Jan03 ?        00:00:48 [xfsaild/sda2]
+root       263     2  0 Jan03 ?        00:00:01 [kworker/0:1H]
+root       326     1  0 Jan03 ?        00:00:47 /usr/lib/systemd/systemd-journald
 root       354     1  0 Jan03 ?        00:00:00 /usr/lib/systemd/systemd-udevd
 root       381     2  0 Jan03 ?        00:00:00 [hwrng]
-root       431     2  0 Jan03 ?        00:00:00 [kworker/2:2]
+root       431     2  0 Jan03 ?        00:00:01 [kworker/2:2]
 root       437     2  0 Jan03 ?        00:00:00 [nfit]
-root       456     1  0 Jan03 ?        00:00:01 /sbin/auditd
+root       456     1  0 Jan03 ?        00:00:13 /sbin/auditd
 polkitd    495     1  0 Jan03 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
-dbus       499     1  0 Jan03 ?        00:00:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+dbus       499     1  0 Jan03 ?        00:00:01 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
 chrony     503     1  0 Jan03 ?        00:00:00 /usr/sbin/chronyd
 root       504     1  0 Jan03 ?        00:00:00 /usr/sbin/acpid
 root       528     1  0 Jan03 ttyS0    00:00:00 /sbin/agetty --keep-baud 115200,38400,9600 ttyS0 vt220
 root       529     1  0 Jan03 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
 root       535     1  0 Jan03 ?        00:00:00 /usr/bin/python2 -Es /usr/sbin/firewalld --nofork --nopid
-root       556     1  0 Jan03 ?        00:00:00 /usr/sbin/NetworkManager --no-daemon
+root       556     1  0 Jan03 ?        00:00:02 /usr/sbin/NetworkManager --no-daemon
 root       616     2  0 Jan03 ?        00:00:00 [kworker/2:1H]
 root       682   556  0 Jan03 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-eth0.pid -lf /var/lib/NetworkManager/dhclient-4580a89d-062a-4ddc-a6fb-53bc2caf2784-eth0.lease -cf /var/lib/NetworkManager/dhclient-eth0.conf eth0
-root       961     1  0 Jan03 ?        00:00:02 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
-root       962     1  0 Jan03 ?        00:00:04 /usr/bin/google_osconfig_agent
-root       963     1  0 Jan03 ?        00:00:04 /usr/sbin/rsyslogd -n
-root       970     1  0 Jan03 ?        00:00:04 /usr/bin/google_guest_agent
+root       961     1  0 Jan03 ?        00:00:14 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
+root       962     1  0 Jan03 ?        00:00:24 /usr/bin/google_osconfig_agent
+root       963     1  0 Jan03 ?        00:00:29 /usr/sbin/rsyslogd -n
+root       970     1  0 Jan03 ?        00:00:20 /usr/bin/google_guest_agent
 root      1320     1  0 Jan03 ?        00:00:00 /usr/libexec/postfix/master -w
 postfix   1328  1320  0 Jan03 ?        00:00:00 qmgr -l -t unix -u
-root      1329     2  0 Jan03 ?        00:00:00 [kworker/1:2]
+root      1329     2  0 Jan03 ?        00:00:02 [kworker/1:2]
 root      1341     1  0 Jan03 ?        00:00:00 /usr/lib/systemd/systemd-logind
 root      1351     1  0 Jan03 ?        00:00:00 /usr/sbin/crond -n
 root      1370     2  0 Jan03 ?        00:00:00 [kworker/3:1H]
 root      1386     2  0 Jan03 ?        00:00:00 [kworker/1:1H]
-postfix   6744  1320  0 02:48 ?        00:00:00 pickup -l -t unix -u
-root      6839     2  0 02:57 ?        00:00:00 [kworker/1:0]
-root      6894     1  0 03:01 ?        00:00:00 /usr/sbin/anacron -s
-root      6907     2  0 03:01 ?        00:00:00 [kworker/2:0]
-root      6909     2  0 03:01 ?        00:00:00 [kworker/0:1]
-root      7063  6894  0 03:13 ?        00:00:00 /bin/bash /bin/run-parts /etc/cron.daily
-root      7067  7063  0 03:13 ?        00:00:00 /usr/bin/python -tt /usr/sbin/yum-cron
-root      7068  7063  0 03:13 ?        00:00:00 awk -v progname=/etc/cron.daily/0yum-daily.cron progname { ????   print progname &quot;:\n&quot; ????   progname=&quot;&quot;; ???       } ???       { print; }
-root      8043     2  0 03:55 ?        00:00:00 [kworker/3:0]
-root      8065 25245  0 03:56 ?        00:00:00 sshd: germc3 [priv]
-germc3    8079  8065  0 03:56 ?        00:00:00 sshd: germc3@pts/0
-germc3    8080  8079  0 03:56 pts/0    00:00:00 -bash
-root      8356     2  0 04:05 ?        00:00:00 [kworker/3:1]
-root      8508     2  0 04:11 ?        00:00:00 [kworker/3:2]
-huazhou   8665 14144 21 04:17 ?        00:00:01 /usr/lib/rstudio-server/bin/rsession -u huazhou --session-use-secure-cookies 0 --launcher-token B78F7F16 --r-restore-workspace 2 --r-run-rprofile 2
-huazhou   8711  8665 87 04:17 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-huazhou   8826  8711  0 04:17 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
-huazhou   8827  8826  0 04:17 ?        00:00:00 ps -eaf
-rstudio+ 14144     1  0 Jan03 ?        00:00:08 /usr/lib/rstudio-server/bin/rserver
-root     25245     1  0 Jan03 ?        00:00:01 /usr/sbin/sshd -D
-root     32087     1  0 Jan03 ?        00:00:00 /opt/shiny-server/ext/node/bin/shiny-server /opt/shiny-server/lib/main.js
-root     32104     2  0 Jan03 ?        00:00:02 [kworker/0:0]</code></pre></li>
+huazhou   4541 14144  0 04:52 ?        00:00:16 /usr/lib/rstudio-server/bin/rsession -u huazhou --session-use-secure-cookies 0 --launcher-token B78F7F16 --r-restore-workspace 2 --r-run-rprofile 2
+root      6667  9430  0 05:14 ?        00:00:00 sshd: huazhou [priv]
+huazhou   6670  6667  0 05:14 ?        00:00:00 sshd: huazhou@pts/0
+huazhou   6671  6670  0 05:14 pts/0    00:00:00 -bash
+postfix   7092  1320  0 05:29 ?        00:00:00 pickup -l -t unix -u
+root      8680     2  0 05:45 ?        00:00:00 [kworker/3:0]
+root      9076     2  0 05:51 ?        00:00:00 [kworker/3:1]
+root      9430     1  0 Jan04 ?        00:00:08 /usr/sbin/sshd -D
+root     10267     2  0 05:56 ?        00:00:00 [kworker/3:2]
+huazhou  10293  4541 85 05:57 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+huazhou  10408 10293  0 05:57 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
+huazhou  10409 10408  0 05:57 ?        00:00:00 ps -eaf
+rstudio+ 14144     1  0 Jan03 ?        00:00:40 /usr/lib/rstudio-server/bin/rserver
+root     25760     2  0 Jan04 ?        00:00:04 [kworker/0:2]
+root     29164     2  0 Jan04 ?        00:00:00 [kworker/1:1]
+root     30658     2  0 00:11 ?        00:00:00 [kworker/0:0]
+root     31317     2  0 01:09 ?        00:00:00 [kworker/2:1]
+root     32087     1  0 Jan03 ?        00:00:00 /opt/shiny-server/ext/node/bin/shiny-server /opt/shiny-server/lib/main.js</code></pre></li>
 <li><p>All Python processes:</p>
 <pre class="bash"><code>ps -eaf | grep python</code></pre>
 <pre><code>root       535     1  0 Jan03 ?        00:00:00 /usr/bin/python2 -Es /usr/sbin/firewalld --nofork --nopid
-root       961     1  0 Jan03 ?        00:00:02 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
-root      7067  7063  0 03:13 ?        00:00:00 /usr/bin/python -tt /usr/sbin/yum-cron
-huazhou   8828  8711  0 04:17 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
-huazhou   8829  8828  0 04:17 ?        00:00:00 bash -c ps -eaf | grep python
-huazhou   8831  8829  0 04:17 ?        00:00:00 grep python</code></pre></li>
+root       961     1  0 Jan03 ?        00:00:14 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
+huazhou  10410 10293  0 05:57 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
+huazhou  10411 10410  0 05:57 ?        00:00:00 bash -c ps -eaf | grep python
+huazhou  10413 10411  0 05:57 ?        00:00:00 grep python</code></pre></li>
 <li><p>Process with PID=1:</p>
 <pre class="bash"><code>ps -fp 1</code></pre>
 <pre><code>UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 Jan03 ?        00:00:03 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</code></pre></li>
+root         1     0  0 Jan03 ?        00:00:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</code></pre></li>
 <li><p>All processes owned by a user:</p>
 <pre class="bash"><code>ps -fu huazhou</code></pre>
 <pre><code>UID        PID  PPID  C STIME TTY          TIME CMD
-huazhou   8665 14144 18 04:17 ?        00:00:01 /usr/lib/rstudio-server/bin/rsession -u huazhou --session-use-secure-cookies 0 --launcher-token B78F7F16 --r-restore-workspace 2 --r-run-rprofile 2
-huazhou   8711  8665 45 04:17 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-huazhou   8834  8711  0 04:17 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
-huazhou   8835  8834  0 04:17 ?        00:00:00 ps -fu huazhou</code></pre></li>
+huazhou   4541 14144  0 04:52 ?        00:00:16 /usr/lib/rstudio-server/bin/rsession -u huazhou --session-use-secure-cookies 0 --launcher-token B78F7F16 --r-restore-workspace 2 --r-run-rprofile 2
+huazhou   6670  6667  0 05:14 ?        00:00:00 sshd: huazhou@pts/0
+huazhou   6671  6670  0 05:14 pts/0    00:00:00 -bash
+huazhou  10293  4541 87 05:57 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/ucla-biostat203b-2021winter.github.io/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+huazhou  10416 10293  0 05:57 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
+huazhou  10417 10416  0 05:57 ?        00:00:00 ps -fu huazhou</code></pre></li>
 </ul>
 </div>
 <div id="kill-processes" class="section level2">
@@ -2033,17 +2030,18 @@ huazhou   8835  8834  0 04:17 ?        00:00:00 ps -fu huazhou</code></pre></li>
 <p>SSH (secure shell) is the dominant cryptographic network protocol for secure network connection via an insecure network.</p>
 <ul>
 <li><p>On Linux or Mac ternminal, access the teaching server by</p>
-<pre class="bash"><code>ssh username@server.ucla-biostat-203b.com</code></pre></li>
-<li><p>For Windows users, there are 2 ways: (1) (highly recommended) <a href="git%20bash%20commands">Git Bash</a>, (2) (not recommended) <a href="http://www.putty.org">PuTTY</a> program (free), or (3) (may be an overkill for this class) use WSL for Windows to install a full fledged Linux system within Windows.</p></li>
+<pre class="bash"><code>ssh USERNAME@server.ucla-biostat-203b.com</code></pre>
+<p>Replace above <code>USERNAME</code> by your account user name on teaching server.</p></li>
+<li><p>For Windows users, there are 2 ways: (1) (highly recommended) <a href="https://git-scm.com/download/win">Git Bash</a> which is included in Git for Windows, (2) (not recommended) <a href="http://www.putty.org">PuTTY</a> program (free), or (3) (may be an overkill for this class) use WSL for Windows to install a full fledged Linux system within Windows.</p></li>
 </ul>
 </div>
-<div id="use-keys-over-password" class="section level2">
-<h2>Use keys over password</h2>
+<div id="advantages-of-keys-over-password" class="section level2">
+<h2>Advantages of keys over password</h2>
 <ul>
 <li><p>Key authentication is more secure than password. Most passwords are weak.</p></li>
 <li><p>Script or a program may need to systematically SSH into other machines.</p></li>
 <li><p>Log into multiple machines using the same key.</p></li>
-<li><p>Seamless use of many services: Git, AWS or Google cloud service, parallel computing on multiple hosts, Travis CI (continuous integration) etc.</p></li>
+<li><p>Seamless use of many services: Git/GitHub, AWS or Google cloud service, parallel computing on multiple hosts, Travis CI (continuous integration) etc.</p></li>
 <li><p>Many servers only allow key authentication and do not accept password authentication.</p></li>
 </ul>
 </div>
@@ -2128,7 +2126,7 @@ scp [USERNAME]@server.ucla-biostat-203b.com:/[PATH_TO_FILE] [PATH_TO_LOCAL_FOLDE
 <div id="batch-mode" class="section level2">
 <h2>Batch mode</h2>
 <ul>
-<li><p>Demo script <a href="https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/meanEst.R"><code>meanEst.R</code></a> implements an (terrible) estimator of mean <span class="math display">\[
+<li><p>Demo script <a href="https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/meanEst.R"><code>meanEst.R</code></a> implements an (terrible) estimator of mean <span class="math display">\[
 {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{i \text{ is prime}}}{\sum_{i=1}^n 1_{i \text{ is prime}}}.
 \]</span></p>
 <pre><code>## check if a given integer is prime
@@ -2197,7 +2195,7 @@ print(x)</code></pre>
 </ul>
 <hr />
 <ul>
-<li><a href="https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/runSim.R"><code>runSim.R</code></a> has components: (1) <strong>command argument parser</strong>, (2) method implementation, (3) data generator with unspecified parameter <code>n</code>, and (4) estimation based on generated data.</li>
+<li><a href="https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/runSim.R"><code>runSim.R</code></a> has components: (1) <strong>command argument parser</strong>, (2) method implementation, (3) data generator with unspecified parameter <code>n</code>, and (4) estimation based on generated data.</li>
 </ul>
 <pre><code>## parsing command arguments
 for (arg in commandArgs(TRUE)) {
@@ -2233,7 +2231,7 @@ estMeanPrimes(x)</code></pre>
 <pre class="bash"><code>R CMD BATCH &#39;--args n=100&#39; runSim.R</code></pre>
 <p>or</p>
 <pre class="bash"><code>Rscript runSim.R n=100</code></pre>
-<pre><code>[1] -0.3455426</code></pre></li>
+<pre><code>[1] -0.02943338</code></pre></li>
 </ul>
 </div>
 <div id="run-long-jobs" class="section level2">
@@ -2244,7 +2242,7 @@ estMeanPrimes(x)</code></pre>
 <li><p><code>nohup</code> is POSIX standard thus available on Linux and MacOS.</p></li>
 <li><p>Run <code>runSim.R</code> in background and writes output to <code>nohup.out</code>:</p>
 <pre class="bash"><code>nohup Rscript runSim.R n=100 &amp;</code></pre>
-<pre><code>[1] 0.1943515</code></pre>
+<pre><code>[1] -0.1425995</code></pre>
 <p>The <code>&amp;</code> at the end of the command instructs Linux to run this command in background, so we gain control of the terminal immediately.</p></li>
 </ul>
 </div>
@@ -2272,16 +2270,16 @@ estMeanPrimes(x)</code></pre>
 <li><p>Python in many ways makes a better <em>glue</em>.</p></li>
 <li><p>Suppose we have</p>
 <ul>
-<li><a href="https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/runSim.R"><code>runSim.R</code></a> which runs a simulation based on command line argument <code>n</code>.<br />
+<li><a href="https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/runSim.R"><code>runSim.R</code></a> which runs a simulation based on command line argument <code>n</code>.<br />
 </li>
 <li>A large collection of <code>n</code> values that we want to use in our simulation study.<br />
 </li>
 <li>Access to a server with 128 cores.<br />
-How do to parallelize the job?</li>
+How to parallelize the job?</li>
 </ul></li>
 <li><p>Option 1: manually call <code>runSim.R</code> for each setting.</p></li>
 <li><p>Option 2 (smarter): automate calls using R and <code>nohup</code>.</p></li>
-<li><p>Let’s demonstrate using the script <a href="https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/autoSim.R">autoSim.R</a></p>
+<li><p>Let’s demonstrate using the script <a href="https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/autoSim.R">autoSim.R</a></p>
 <pre class="bash"><code>cat autoSim.R</code></pre>
 <pre><code># autoSim.R
 
@@ -2305,7 +2303,7 @@ for (n in nVals) {
 [1] &quot;sysCall=nohup Rscript runSim.R n=900 &gt; n900.txt&quot;
 [1] &quot;sysCall=nohup Rscript runSim.R n=1000 &gt; n1000.txt&quot;</code></pre></li>
 <li><p>Now we just need to write a script to collect results from the output files.</p></li>
-<li><p>Later on we learn how to coordinate large scale computation on UCLA Hoffmann2 cluster, using Linux and R scripting.</p></li>
+<li><p>Later we will learn how to coordinate large scale computation on UCLA Hoffman2 cluster, using Linux and R scripting.</p></li>
 </ul>
 </div>
 </div>

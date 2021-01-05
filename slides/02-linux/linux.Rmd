@@ -15,6 +15,8 @@ bibliography: ../bib-HZ.bib
 knitr::opts_chunk$set(echo = TRUE, comment = '')
 ```
 
+This html is knitted from RMarkdown on the teaching server. 
+
 ## Why Linux
 
 Linux is _the_ most common platform for scientific computing and deployment of data science tools.
@@ -521,12 +523,13 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - On Linux or Mac ternminal, access the teaching server by
     ```{bash, eval=FALSE}
-    ssh username@server.ucla-biostat-203b.com
+    ssh USERNAME@server.ucla-biostat-203b.com
     ```
+Replace above `USERNAME` by your account user name on teaching server.
 
-- For Windows users, there are 2 ways: (1) (highly recommended) [Git Bash](git bash commands), (2) (not recommended) [PuTTY](http://www.putty.org) program (free), or (3) (may be an overkill for this class)  use WSL for Windows to install a full fledged Linux system within Windows.
+- For Windows users, there are 2 ways: (1) (highly recommended) [Git Bash](https://git-scm.com/download/win) which is included in Git for Windows, (2) (not recommended) [PuTTY](http://www.putty.org) program (free), or (3) (may be an overkill for this class)  use WSL for Windows to install a full fledged Linux system within Windows.
 
-## Use keys over password
+## Advantages of keys over password
 
 - Key authentication is more secure than password. Most passwords are weak.
 
@@ -534,7 +537,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Log into multiple machines using the same key.
 
-- Seamless use of many services: Git, AWS or Google cloud service, parallel computing on multiple hosts, Travis CI (continuous integration) etc.
+- Seamless use of many services: Git/GitHub, AWS or Google cloud service, parallel computing on multiple hosts, Travis CI (continuous integration) etc.
 
 - Many servers only allow key authentication and do not accept password authentication.
 
@@ -640,7 +643,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 ## Batch mode
 
-- Demo script [`meanEst.R`](https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+- Demo script [`meanEst.R`](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
 $$
   {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{i \text{ is prime}}}{\sum_{i=1}^n 1_{i \text{ is prime}}}.
 $$
@@ -708,7 +711,7 @@ and then issue commands in R
 
 ----
 
-- [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/runSim.R) has components: (1) **command argument parser**, (2) method implementation, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
+- [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/runSim.R) has components: (1) **command argument parser**, (2) method implementation, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
 ```{bash, echo=FALSE}
 cat runSim.R
 ```
@@ -767,16 +770,16 @@ R in conjuction with `nohup` (or `screen`) can be used to orchestrate a large si
 - Python in many ways makes a better _glue_.
 
 - Suppose we have 
-    - [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
+    - [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
     - A large collection of `n` values that we want to use in our simulation study.  
     - Access to a server with 128 cores.  
-How do to parallelize the job?    
+How to parallelize the job?    
     
 - Option 1: manually call `runSim.R` for each setting.
 
 - Option 2 (smarter): automate calls using R and `nohup`. 
 
-- Let's demonstrate using the script [autoSim.R](https://raw.githubusercontent.com/ucla-biostat203b-2020winter/ucla-biostat203b-2020winter.github.io/master/slides/02-linux/autoSim.R)
+- Let's demonstrate using the script [autoSim.R](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/02-linux/autoSim.R)
     ```{bash}
     cat autoSim.R
     ```
@@ -793,4 +796,4 @@ Note when we call bash command using the `system` function in R, we set optional
     
 - Now we just need to write a script to collect results from the output files.
 
-- Later on we learn how to coordinate large scale computation on UCLA Hoffmann2 cluster, using Linux and R scripting.
+- Later we will learn how to coordinate large scale computation on UCLA Hoffman2 cluster, using Linux and R scripting.
