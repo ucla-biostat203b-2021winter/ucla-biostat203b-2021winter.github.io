@@ -116,7 +116,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ## `man` is man's best friend
 
-Online help for shell commands: `man commandname`.
+Online help for shell commands: `man [COMMANDNAME]`.
 ```{bash}
 # display documentation for the ls command
 man ls
@@ -304,6 +304,9 @@ man ls
 ## Piping and redirection
 
 - `|` sends output from one command as input of another command.
+    ```{bash}
+    ls -l | head -5
+    ```
 
 - `>` directs output from one command to a file.
 
