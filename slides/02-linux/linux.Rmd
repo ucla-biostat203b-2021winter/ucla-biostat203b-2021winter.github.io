@@ -36,6 +36,10 @@ Linux is _the_ most common platform for scientific computing and deployment of d
 
 - RHEL/CentOS is popular on servers. (In December 2020, Red Hat terminated the development of CentOS Linux distribution.)
 
+<p align="center">
+  <img src="./redhat_kills_centos.png" height="200" width="300">
+</p>
+
 - The teaching server for this class runs CentOS 7. UCLA Hoffman2 cluster runs CentOS 6.10 (as of 2020-01-03).
 
 - MacOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to MacOS terminal as well. Windows/DOS, unfortunately, is a totally different breed.
