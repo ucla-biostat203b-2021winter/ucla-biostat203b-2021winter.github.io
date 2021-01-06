@@ -530,11 +530,11 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - On Linux or Mac ternminal, access the teaching server by
     ```{bash, eval=FALSE}
-    ssh USERNAME@server.ucla-biostat-203b.com
+    ssh [USERNAME]@server.ucla-biostat-203b.com
     ```
-Replace above `USERNAME` by your account user name on teaching server.
+Replace above `[USERNAME]` by your account user name on teaching server.
 
-- For Windows users, there are 2 ways: (1) (highly recommended) [Git Bash](https://git-scm.com/download/win) which is included in Git for Windows, (2) (not recommended) [PuTTY](http://www.putty.org) program (free), or (3) (may be an overkill for this class)  use WSL for Windows to install a full fledged Linux system within Windows.
+- For Windows users, there are at least three ways: (1) (highly recommended) [Git Bash](https://git-scm.com/download/win) which is included in Git for Windows, (2) (not recommended) [PuTTY](http://www.putty.org) program (free), or (3) (may be an overkill for this class)  use WSL for Windows to install a full fledged Linux system within Windows.
 
 ## Advantages of keys over password
 
@@ -580,10 +580,16 @@ Replace above `USERNAME` by your account user name on teaching server.
     
     - Use a (optional) paraphrase different form password.  
     
-- Set correct permissions on the `.ssh` folder and key files
+- Set correct permissions on the `.ssh` folder and key files. 
+    - The permission for the `~/.ssh` folder should be `700 (drwx------)`.
+    - The permission of the private key `~/.ssh/id_rsa` should be `600 (-rw-------)`.
+    - The permission of the public key `~/.ssh/id_rsa.pub` should be `644 (-rw-r--r--)`.
     ```{bash, eval=FALSE}
-    chmod 400 ~/.ssh/[KEY_FILENAME]
+    chmod 700 ~/.ssh
+    chmod 600 ~/.ssh/[KEY_FILENAME]
+    chmod 644 ~/.ssh/[KEY_FILENAME].pub
     ```
+    Note Windows is different, it doesn't allow change of permisisons.
 
 ----
 
@@ -591,6 +597,7 @@ Replace above `USERNAME` by your account user name on teaching server.
     ```{bash, eval=FALSE}
     ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@server.ucla-biostat-203b.com
     ```
+    Make sure the permission of the `authorized_keys` file is `600 (-rw-------)`.
 
 - Test your new key.
     ```{bash, eval=FALSE}

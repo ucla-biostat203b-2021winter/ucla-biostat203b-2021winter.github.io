@@ -15,21 +15,30 @@ This tutorial is for Mac users. For Windows users, please first read the [tutori
 
 1. SSH client on MacOS. 
     - MacOS: open the `Terminal` app. You can find `Terminal` from `LaunchPad` -> `Other`, or from `Spotlight Search` (type Terminal). For convenience, you can pin the Terminal program to the Dock.   
-    - If necessary, change default shell to Bash by following command in Terminal
+    - Check that current shell is Bash   
+    ```{bash, eval=F}
+    echo $SHELL
+    ```
+    - If necessary, change default shell to Bash by following command in Terminal. Then close the Terminal window and reopen it.
     ```{bash, eval=F}
     chsh -s /bin/bash
     ```
-    Close the Terminal window and reopen it.
+    
     
 2. Connect to the teaching server. On MacOS Terminal:  
     ```{bash, eval=F}
-    ssh USERNAME@server.ucla-biostat-203b.com
+    ssh [USERNAME]@server.ucla-biostat-203b.com
     ```
-Replace `USERNAME` in the command by your actual user name (your email name in MyUCLA). If you cannot connect, you may not have an account. Ask TA or instructor for help.
+Replace `[USERNAME]` in the command by your actual user name (your email name in MyUCLA). If you cannot connect, you may not have an account. Ask TA or instructor for help.
 
 3. Change password on teaching server
     ```{bash, eval=F}
     passwd
+    ```
+
+4. You can use git to obtain a copy of course materials:
+    ```{bash, eval=F}
+    git clone git@github.com:ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git
     ```
 
 # Install R and RStudio on your own machine. 
@@ -96,5 +105,5 @@ Using either method, make sure keys are in the default location `~/.ssh/`
 
 5. Now try to SSH into the teaching server from your Mac. If keys are set up correctly, you should be able to connect to the teaching server **without entering password**.
 ```{bash, eval=F}
-ssh USERNAME@server.ucla-biostat-203b.com
+ssh [USERNAME]@server.ucla-biostat-203b.com
 ```

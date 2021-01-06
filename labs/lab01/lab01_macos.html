@@ -387,15 +387,20 @@ summary {
 <ul>
 <li>MacOS: open the <code>Terminal</code> app. You can find <code>Terminal</code> from <code>LaunchPad</code> -&gt; <code>Other</code>, or from <code>Spotlight Search</code> (type Terminal). For convenience, you can pin the Terminal program to the Dock.<br />
 </li>
-<li>If necessary, change default shell to Bash by following command in Terminal</li>
+<li>Check that current shell is Bash</li>
 </ul>
-<pre class="bash"><code>chsh -s /bin/bash</code></pre>
-<p>Close the Terminal window and reopen it.</p></li>
+<pre class="bash"><code>echo $SHELL</code></pre>
+<ul>
+<li>If necessary, change default shell to Bash by following command in Terminal. Then close the Terminal window and reopen it.</li>
+</ul>
+<pre class="bash"><code>chsh -s /bin/bash</code></pre></li>
 <li><p>Connect to the teaching server. On MacOS Terminal:</p>
-<pre class="bash"><code>ssh USERNAME@server.ucla-biostat-203b.com</code></pre>
-<p>Replace <code>USERNAME</code> in the command by your actual user name (your email name in MyUCLA). If you cannot connect, you may not have an account. Ask TA or instructor for help.</p></li>
+<pre class="bash"><code>ssh [USERNAME]@server.ucla-biostat-203b.com</code></pre>
+<p>Replace <code>[USERNAME]</code> in the command by your actual user name (your email name in MyUCLA). If you cannot connect, you may not have an account. Ask TA or instructor for help.</p></li>
 <li><p>Change password on teaching server</p>
 <pre class="bash"><code>passwd</code></pre></li>
+<li><p>You can use git to obtain a copy of course materials:</p>
+<pre class="bash"><code>git clone git@github.com:ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git</code></pre></li>
 </ol>
 </div>
 <div id="install-r-and-rstudio-on-your-own-machine." class="section level1">
@@ -468,7 +473,7 @@ summary {
 </ul></li>
 <li>Now try to SSH into the teaching server from your Mac. If keys are set up correctly, you should be able to connect to the teaching server <strong>without entering password</strong>.</li>
 </ol>
-<pre class="bash"><code>ssh USERNAME@server.ucla-biostat-203b.com</code></pre>
+<pre class="bash"><code>ssh [USERNAME]@server.ucla-biostat-203b.com</code></pre>
 </div>
 
 
