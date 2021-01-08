@@ -38,7 +38,7 @@ Replace `[USERNAME]` in the command by your actual user name (your email name in
 
 4. You can use git to obtain a copy of course materials:
     ```{bash, eval=F}
-    git clone git@github.com:ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git
+    git clone https://github.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git
     ```
 
 # Install R and RStudio on your own machine. 
@@ -55,7 +55,7 @@ Check whether `git` command is available in Terminal. If not, follow instruction
 
 1. On whichever machine that has `git` installed, e.g., your Mac Terminal or teaching server, you can obtain the 203B course material by command
 ```{bash, eval=F}
-git clone git@github.com:ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git
+git clone https://github.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io.git
 ```
 
 2. The Git repository <https://github.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io> is frequently updated. To sync your git clone with the current repo., first enter your local repo directory
