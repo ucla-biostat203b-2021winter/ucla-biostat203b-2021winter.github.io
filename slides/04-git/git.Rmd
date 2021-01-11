@@ -162,11 +162,11 @@ Name and email appear in each commit you make.
 
 - Initialize a project.
 
-    - Create a repository, e.g., `biostat-203b-2020-winter` on GitHub.
+    - Create a repository, e.g., `biostat-203b-2021-winter` on GitHub.
     
     - Clone the repository to your local machine:
     ```{bash, eval=FALSE}
-    git clone git@github.com:[USERNAME]/biostat-203b-2020-winter.git
+    git clone git@github.com:[USERNAME]/biostat-203b-2021-winter.git
     ```
 
 - Working with your local copy.
@@ -223,13 +223,13 @@ Name and email appear in each commit you make.
     
     - `git tag tagname`: create a tag.
 
-## Sample session | Getting started with homework
+## Sample session | Getting started with homework | Lab 2
 
 On [GitHub.com](https://github.com):
 
 - Obtain [Student Developer Pack](https://education.github.com/pack).
 
-- Create a private repository `biostat-203b-2020-winter`. Add `Hua-Zhou` and `juhkim111` as your collaborators with write permission.
+- Create a private repository `biostat-203b-2021-winter`. Add `Hua-Zhou`, `Chris-German` and `ElvisHanCui` as your collaborators with write permission.
 
 On your local machine: 
 
