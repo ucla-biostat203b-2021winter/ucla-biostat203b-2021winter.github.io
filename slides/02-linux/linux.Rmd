@@ -528,7 +528,7 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 SSH (secure shell) is the dominant cryptographic network protocol for secure network connection via an insecure network.
 
-- On Linux or Mac ternminal, access the teaching server by
+- On Linux or Mac terminal, access the teaching server by
     ```{bash, eval=FALSE}
     ssh [USERNAME]@server.ucla-biostat-203b.com
     ```
@@ -562,7 +562,7 @@ Replace above `[USERNAME]` by your account user name on teaching server.
 
 - _Public key_. Put on the machine(s) you want to log in.
 
-- _Private key_. Put on your own computer. Consider this as the actual key in your pocket; never give to others.
+- _Private key_. Put on your own computer. Consider this as the actual key in your pocket; never give to others. For fun: <https://www.youtube.com/watch?v=S8K464ImU0c>
 
 - Messages from server to your computer is encrypted with your public key. It can only be decrypted using your private key.
 
