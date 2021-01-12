@@ -562,7 +562,7 @@ Replace above `[USERNAME]` by your account user name on teaching server.
 
 - _Public key_. Put on the machine(s) you want to log in.
 
-- _Private key_. Put on your own computer. Consider this as the actual key in your pocket; never give to others. For fun: <https://www.youtube.com/watch?v=S8K464ImU0c>
+- _Private key_. Put on your own computer. Consider this as the actual key in your pocket; **never give private key to others**. For fun: <https://www.youtube.com/watch?v=S8K464ImU0c>
 
 - Messages from server to your computer is encrypted with your public key. It can only be decrypted using your private key.
 
@@ -578,7 +578,7 @@ Replace above `[USERNAME]` by your account user name on teaching server.
     
     - `[USERNAME]` is the user for whom you will apply this SSH key.   
     
-    - Use a (optional) paraphrase different form password.  
+    - Use a (**optional**) paraphrase different from password.  
     
 - Set correct permissions on the `.ssh` folder and key files. 
     - The permission for the `~/.ssh` folder should be `700 (drwx------)`.
@@ -630,7 +630,9 @@ Replace above `[USERNAME]` by your account user name on teaching server.
 
 - GUIs for Windows (WinSCP) or Mac (Cyberduck).
 
-- (My preferred way) Use a **version control system** (git, svn, cvs, ...) to sync project files between different machines and systems.
+- You can even use RStudio to upload files to a remote machine with RStudio Server installed.
+
+- (**Preferred way**) Use a **version control system** (git, svn, cvs, ...) to sync project files between different machines and systems.
 
 ## Line breaks in text files
 
@@ -743,7 +745,7 @@ or
 
 ## Run long jobs
 
-- Many statistical computing tasks take long: simulation, MCMC, etc. When we exit Linux when the job is unfinished, the job is killed.
+- Many statistical computing tasks take long: simulation, MCMC, etc. If we exit Linux when the job is unfinished, the job is killed.
 
 - `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process; we can log in later to check status and results.
 
