@@ -12,6 +12,7 @@ Recommended readings:
 * [_Happy Git with R_](http://happygitwithr.com) by Jenny Bryan.  
 * [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J.J. Allaire, and Garrett Grolemund.  
 * [_R for Data Science_](http://r4ds.had.co.nz) by Hadley Wickham and Garrett Grolemund.  
+* [_R Graphics Cookbook_](https://r-graphics.org) by Winston Chang.   
 * [_Advanced R_](http://adv-r.had.co.nz) by Hadley Wickham.  
 * [_R Packages_](http://r-pkgs.had.co.nz) by Hadley Wickham.  
 * [_Rcpp For Everyone_](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda.  
