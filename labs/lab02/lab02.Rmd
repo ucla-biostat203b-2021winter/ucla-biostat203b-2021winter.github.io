@@ -46,6 +46,8 @@ Using either method, make sure keys are in the default location `~/.ssh/`
 
 9. Commit the `Rproj` file.
 
+---
+
 10. Create a new branch called `develop`.
 
 11. Within `develop` branch, create folder `hw1` and start working on `hw1sol.Rmd`. Commit `hw1sol.Rmd`.

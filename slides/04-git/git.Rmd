@@ -114,7 +114,7 @@ Git is a **distributed** version control system:
 
 - RStudio supports Git.
     
-- Do **not** totally rely on GUI or IDE. Learn to use Git on command line, which is needed for cluster and cloud computing.
+- Do **not** totally rely on GUI or IDE. Learn to use Git on command line, which is needed for cluster and cloud computing. RStudio has basic Git integration, but still cannot do tasks such as tagging, commiting selected files within a folder, and so on.
 
 ## Git workflow
 
