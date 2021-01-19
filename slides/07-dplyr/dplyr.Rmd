@@ -87,7 +87,7 @@ A typical data science project:
     distinct(flights, month, .keep_all = TRUE)
     ```
     
-- With `.keep_all = FALSE`, only distince values of the variable are selected:
+- With `.keep_all = FALSE`, only distinct values of the variable are selected:
     ```{r}
     distinct(flights, month)
     ```

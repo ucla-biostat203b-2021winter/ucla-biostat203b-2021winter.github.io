@@ -611,7 +611,7 @@ filter(flights, month == 1, day == 1)</code></pre>
 ## # … with 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre></li>
-<li><p>With <code>.keep_all = FALSE</code>, only distince values of the variable are selected:</p>
+<li><p>With <code>.keep_all = FALSE</code>, only distinct values of the variable are selected:</p>
 <pre class="r"><code>distinct(flights, month)</code></pre>
 <pre><code>## # A tibble: 12 x 1
 ##    month
