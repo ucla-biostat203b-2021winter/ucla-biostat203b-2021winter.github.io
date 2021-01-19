@@ -58,6 +58,10 @@ A typical data science project:
 
 ## Create tibbles
 
+<p align="center">
+  <img src="./iris_dataset.jpg" height="200" width="350">
+</p>
+
 - `iris` is a dataframe available in base R:
     ```{r}
     # a regular data frame
@@ -254,7 +258,7 @@ Here we see the **pipe operator** `%>%` pipes the output from previous command t
     read_excel("datasets.xls")
     ```
     ```{r}
-    # xls file
+    # xlsx file
     read_excel("datasets.xlsx")
     ```
     
