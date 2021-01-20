@@ -600,6 +600,6 @@ ggplot(mpg, aes(displ, hwy)) + geom_point()
 ggsave("my-plot.pdf")
 ```
 
-## Cheat sheet  
+# Cheat sheet  
 
 [RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is extremely helpful.
