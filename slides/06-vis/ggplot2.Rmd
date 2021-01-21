@@ -4,10 +4,10 @@ author: "Dr. Hua Zhou @ UCLA"
 date: "Jan 21, 2021"
 subtitle: Biostat 203B
 output:
-  # ioslides_presentation: default
   html_document:
     toc: true
     toc_depth: 4  
+  # ioslides_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -267,7 +267,7 @@ The height of bar is total carat in each cut category.
 
 ----
 
-- `position_gitter()` add random noise to X and Y position of each
+- `position = "jitter"` adds random noise to X and Y position of each
 element to avoid overplotting:  
     ```{r}
     ggplot(data = mpg) + 
@@ -592,6 +592,59 @@ automatically adds scales
 <p align="center">
 <img src="./visualization-themes.png" height="550">
 </p>
+
+Many options exist in the `theme()` function for specific customizations 
+```{r, message = FALSE}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+theme(legend.position = c(0.85, 0.85), 
+    legend.key = element_blank(), 
+    axis.text.x = element_text(angle = 0, size = 12), 
+    axis.text.y = element_text(angle=0, size = 12), 
+    axis.ticks = element_blank(), 
+    legend.text=element_text(size = 8),
+    panel.grid.major = element_blank(), 
+    panel.border = element_blank(), 
+    panel.grid.minor = element_blank(), 
+    panel.background = element_blank(), 
+    axis.line = element_line(color = 'black', size = 0.3), 
+    text = element_text(size = 13))
+```
+
+## Manual Colors
+
+You may want to manually enter colors instead of relying on default colors. There is a [tool to pick optimally distinct colors](https://medialab.github.io/iwanthue/) that is useful. 
+
+Manually select colors to use 
+
+```{r, message = FALSE}
+ggplot(filter(mpg, class == "suv" | class== "compact" |
+                class == "pickup" | class == "minivan"), 
+       aes(displ, hwy)) +
+  geom_point(aes(color = class)) +
+  theme_bw() + 
+  scale_color_manual(values = c("#24aad8",
+  "#cb6450",
+  "#80a14b",
+  "#aa65ba")) 
+```
+
+Manually assign labels to each color
+
+```{r, message = FALSE}
+    ggplot(filter(mpg, class == "suv" | class== "compact" |
+                    class == "pickup" | class == "minivan"), 
+           aes(displ, hwy)) +
+      geom_point(aes(color = class)) +
+      theme_bw() + 
+      scale_color_manual(values = c(suv = "#24aad8",
+      pickup = "#cb6450",
+      minivan = "#80a14b",
+      compact = "#aa65ba")) 
+```
+
+
 
 ## Saving plots
 
