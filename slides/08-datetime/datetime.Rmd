@@ -1,6 +1,6 @@
 ---
 title: "Dates and Times | r4ds Chapter 16"
-date: "Feb 2, 2021"
+date: "Jan 28, 2021"
 subtitle: Biostat 203B
 output:
   # ioslides_presentation: default

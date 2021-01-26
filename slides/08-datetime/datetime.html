@@ -373,7 +373,7 @@ summary {
 
 <h1 class="title toc-ignore">Dates and Times | r4ds Chapter 16</h1>
 <h3 class="subtitle">Biostat 203B</h3>
-<h4 class="date">Feb 2, 2021</h4>
+<h4 class="date">Jan 28, 2021</h4>
 
 </div>
 
@@ -466,10 +466,10 @@ summary {
 <p>Today:</p>
 <pre class="r"><code># current date
 today()</code></pre>
-<pre><code>## [1] &quot;2021-01-17&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-25&quot;</code></pre>
 <pre class="r"><code># current date-time
 now()</code></pre>
-<pre><code>## [1] &quot;2021-01-17 22:39:35 PST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-25 22:06:42 PST&quot;</code></pre>
 <div id="from-strings" class="section level3">
 <h3>From strings</h3>
 <pre class="r"><code>ymd(&quot;2020-01-30&quot;)</code></pre>
@@ -593,10 +593,10 @@ year(datetime)</code></pre>
 <pre class="r"><code># How old is Hadley?
 h_age &lt;- today() - ymd(19791014)
 h_age</code></pre>
-<pre><code>## Time difference of 15071 days</code></pre>
+<pre><code>## Time difference of 15079 days</code></pre>
 <p>lubridate provides the <strong>duration</strong> object that always uses seconds:</p>
 <pre class="r"><code>as.duration(h_age)</code></pre>
-<pre><code>## [1] &quot;1302134400s (~41.26 years)&quot;</code></pre>
+<pre><code>## [1] &quot;1302825600s (~41.28 years)&quot;</code></pre>
 <p>Constructors for duration:</p>
 <pre class="r"><code>dseconds(5)</code></pre>
 <pre><code>## [1] &quot;5s&quot;</code></pre>
