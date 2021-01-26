@@ -1,7 +1,7 @@
 ---
 title: "Visualizing Longitudinal Data Using brolgar"
 author: "Dr. Hua Zhou @ UCLA"
-date: "Jan 21, 2021"
+date: "Jan 26, 2021"
 subtitle: Biostat 203B
 output:
   # ioslides_presentation: default
