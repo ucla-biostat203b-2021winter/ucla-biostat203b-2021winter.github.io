@@ -1,0 +1,81 @@
+---
+title: "Biostat 203B Homework 2"
+subtitle: Due Feb 5 @ 11:59PM
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+library(tidyverse)
+library(data.table)
+library(lubridate)
+```
+
+**This document will be finalized on Jan 28, 2021.**
+
+Use tidyverse (ggpot2, dplyr) to explore the [MIMIC-IV](https://mimic-iv.mit.edu) data introduced in [homework 1](https://ucla-biostat203b-2021winter.github.io/hw/hw1/hw1.html).
+
+```{bash}
+tree -s -L 2 /usr/203b-data/mimic-iv/
+```
+
+## Q1. `read.csv` (base R) vs `read_csv` (tidyverse) vs `fread` (data.table)
+
+There are quite a few utilities in R for reading data files. Let us test the speed of reading a moderate sized compressed csv file, `admissions.csv.gz`, by three programs: `read.csv` in base R, `read_csv` in tidyverse, and `fread` in the popular data.table package. Is there any speed difference?
+
+In this homework, we stick to the tidyverse. 
+
+## Q2. Explore the `admission` table
+
+Demographic information of the patients admitted into hospital is available in `ADMISSION.csv.gz`. See <https://mimic-iv.mit.edu/docs/datasets/core/admissions/> for details of each field in this file. Summarize following variables using appropriate graphs. Explain any patterns you observe.   
+
+- admission year  
+- admission month  
+- admission month day  
+- admission week day  
+- admission hour (anything unusual?)  
+- length of hospital stay (from admission to discharge)  
+- number of deaths in each year  
+- admission type  
+- number of admissions per patient  
+- admission location  
+- insurance  
+- language  
+- martial status  
+- ethnicity  
+- death 
+
+Note it is possible that one patient (uniquely identified by the `SUBJECT_ID`) is admitted into hospital multiple times. When summarizing some demographic information, it makes sense to summarize based on unique patients. 
+
+## Q3 Link `admission` and `patient` tables
+
+Link the data in `admissions.csv.gz` and `patients.csv.gz` (<https://mimic-iv.mit.edu/docs/datasets/core/patients/>) and summarize following variables using appropriate graphs:  
+
+- gender  
+- age at admission 
+
+## Q4 ICU statys
+
+`icustays.csv.gz` (<https://mimic-iv.mit.edu/docs/datasets/icu/icustays/>) contains data about Intensive Care Units (ICU) stays. Summarize following variables using appropriate graphs:  
+
+- length of ICU stay  
+- first ICU unit  
+- gender  
+- age  
+
+## Q5 Diagnosis related groups (DRGs)
+
+`drgcodes.csv.gz` (<https://mimic-iv.mit.edu/docs/datasets/hosp/drgcodes/>) contains the diagnosis related groups (DRGs), which was used by the hospital to obtain reimbursement for a patient’s hospital stay. The codes correspond to the primary reason for a patient’s stay at the hospital. Summarize the variables in `drgcodes.csv.gz` by graphs.
+
+## Q6 Chartered events
+
+`chartevents.csv.gz` (<https://mimic-iv.mit.edu/docs/datasets/icu/chartevents/>) contains all the charted data available for a patient. During their ICU stay, the primary repository of a patient’s information is their electronic chart. The `ITEMID` variable indicates a single measurement type in the database. The `VALUE` variable is the value measured for `ITEMID`. 
+
+`d_items.csv.gz` (<https://mimic-iv.mit.edu/docs/datasets/icu/d_items/>) is the dictionary for the `ITEMID` in `CHARTEVENTS.csv`. Find potential values of `ITEMID` that correspond to systolic blood pressure, i.e., `LABEL` contains the string `systolic`. 
+
+## Q6 Putting things together
+
+Let us create a tibble for all ICU stays, containing at least variables `subject_id`, `hadm_id`, `drg_type`, `drg_code`, `drg_severity`, `drg_severity`, `age`, `gender`, `ethnicity`, demographic information, the first systolic blood pressure measurement during ICU stay, and whether the patient died within 30 days of hospital admission.
