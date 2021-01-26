@@ -1,7 +1,7 @@
 ---
 title: "Data Transformation With dplyr"
 author: "Dr. Hua Zhou @ UCLA"
-date: "Jan 28, 2021"
+date: "Jan 26, 2021"
 subtitle: Biostat 203B
 output:
   # ioslides_presentation: default
@@ -751,6 +751,6 @@ Same as
     setdiff(df2, df1)
     ```
     
-## Cheat sheet  
+# Cheat sheet  
 
 [RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) is extremely helpful.    
