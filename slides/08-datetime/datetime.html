@@ -466,10 +466,10 @@ summary {
 <p>Today:</p>
 <pre class="r"><code># current date
 today()</code></pre>
-<pre><code>## [1] &quot;2021-01-25&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-28&quot;</code></pre>
 <pre class="r"><code># current date-time
 now()</code></pre>
-<pre><code>## [1] &quot;2021-01-25 22:06:42 PST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-01-28 14:50:19 PST&quot;</code></pre>
 <div id="from-strings" class="section level3">
 <h3>From strings</h3>
 <pre class="r"><code>ymd(&quot;2020-01-30&quot;)</code></pre>
@@ -519,9 +519,8 @@ flights_dt &lt;- flights %&gt;%
     sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),
     sched_arr_time = make_datetime_100(year, month, day, sched_arr_time)
   ) %&gt;% 
-  select(origin, dest, ends_with(&quot;delay&quot;), ends_with(&quot;time&quot;))
-
-flights_dt</code></pre>
+  select(origin, dest, ends_with(&quot;delay&quot;), ends_with(&quot;time&quot;)) %&gt;%
+  print(width = Inf)</code></pre>
 <pre><code>## # A tibble: 328,063 x 9
 ##    origin dest  dep_delay arr_delay dep_time            sched_dep_time     
 ##    &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             
@@ -535,8 +534,19 @@ flights_dt</code></pre>
 ##  8 LGA    IAD          -3       -14 2013-01-01 05:57:00 2013-01-01 06:00:00
 ##  9 JFK    MCO          -3        -8 2013-01-01 05:57:00 2013-01-01 06:00:00
 ## 10 LGA    ORD          -2         8 2013-01-01 05:58:00 2013-01-01 06:00:00
-## # … with 328,053 more rows, and 3 more variables: arr_time &lt;dttm&gt;,
-## #   sched_arr_time &lt;dttm&gt;, air_time &lt;dbl&gt;</code></pre>
+##    arr_time            sched_arr_time      air_time
+##    &lt;dttm&gt;              &lt;dttm&gt;                 &lt;dbl&gt;
+##  1 2013-01-01 08:30:00 2013-01-01 08:19:00      227
+##  2 2013-01-01 08:50:00 2013-01-01 08:30:00      227
+##  3 2013-01-01 09:23:00 2013-01-01 08:50:00      160
+##  4 2013-01-01 10:04:00 2013-01-01 10:22:00      183
+##  5 2013-01-01 08:12:00 2013-01-01 08:37:00      116
+##  6 2013-01-01 07:40:00 2013-01-01 07:28:00      150
+##  7 2013-01-01 09:13:00 2013-01-01 08:54:00      158
+##  8 2013-01-01 07:09:00 2013-01-01 07:23:00       53
+##  9 2013-01-01 08:38:00 2013-01-01 08:46:00      140
+## 10 2013-01-01 07:53:00 2013-01-01 07:45:00      138
+## # … with 328,053 more rows</code></pre>
 <p>Now we can visualize the distribution of departure times across the year</p>
 <pre class="r"><code>flights_dt %&gt;% 
   ggplot(aes(x= dep_time)) + 
@@ -593,10 +603,10 @@ year(datetime)</code></pre>
 <pre class="r"><code># How old is Hadley?
 h_age &lt;- today() - ymd(19791014)
 h_age</code></pre>
-<pre><code>## Time difference of 15079 days</code></pre>
+<pre><code>## Time difference of 15082 days</code></pre>
 <p>lubridate provides the <strong>duration</strong> object that always uses seconds:</p>
 <pre class="r"><code>as.duration(h_age)</code></pre>
-<pre><code>## [1] &quot;1302825600s (~41.28 years)&quot;</code></pre>
+<pre><code>## [1] &quot;1303084800s (~41.29 years)&quot;</code></pre>
 <p>Constructors for duration:</p>
 <pre class="r"><code>dseconds(5)</code></pre>
 <pre><code>## [1] &quot;5s&quot;</code></pre>
