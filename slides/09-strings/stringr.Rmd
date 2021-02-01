@@ -327,7 +327,7 @@ for a complete list.
 
 - Parentheses define groups, which can be back-referenced as `\1`, `\2`, ...
     ```{r}
-    # only show matched strings
+    # with match = TRUE, only show matched strings
     str_view(fruit, "(..)\\1", match = TRUE)
     ```
     
@@ -339,7 +339,7 @@ for a complete list.
     str_detect(x, "e")
     ```
 
-- Vector `words` contains about 1000 commonly used words:
+- Vector `words` contains 980 commonly used words:
     ```{r}
     length(words)
     head(words)
@@ -564,12 +564,15 @@ same as
     
 - Example: How to match a telephone number with the form (###) ###-####?
     ```{r, error=TRUE}
+    # This produces error. Why?
     text = c("apple", "(219) 733-8965", "(329) 293-8753")
     str_detect(text, "(\d\d\d) \d\d\d-\d\d\d\d")
     ```
     ```{r}
+    # This doesn't give the answer we want. Why?
     text = c("apple", "(219) 733-8965", "(329) 293-8753")
     str_detect(text, "(\\d\\d\\d) \\d\\d\\d-\\d\\d\\d\\d")
+    # This should yield the desired answer
     str_detect(text, "\\(\\d\\d\\d\\) \\d\\d\\d-\\d\\d\\d\\d")
     ```
 
@@ -592,3 +595,7 @@ same as
 # Teaser: how to validate email address using RegEx
 
 <https://r4ds.had.co.nz/strings.html#tools>
+
+# Cheat sheet  
+
+[stringr cheat sheet](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/09-strings/stringr_cheatsheet.pdf) is extremely helpful.    
