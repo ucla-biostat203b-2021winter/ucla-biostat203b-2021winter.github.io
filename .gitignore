@@ -48,6 +48,7 @@ hw?sol.Rmd
 hw?sol.html
 hwsol_to_hw.Rmd
 hwsol_to_hw.html
+*.csv.gz
 
 tidy_files/
 ggplot2_files/
