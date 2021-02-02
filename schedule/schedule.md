@@ -27,5 +27,5 @@ Recommended readings:
 | 6 | 2/9 web scraping \[slides: [Rmd](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/10-scraping/scraping.Rmd), [html](../slides/10-scraping/scraping.html)\], shiny for interactive document | 2/11 Lab | HW3 |    
 | 7 | 2/16 databases intro., dbplyr | 2/18 cloud computing with GCP |   
 | 8 | 2/23 R programming (benchmark, debug, profile), Rcpp, parallel computing, R package | 2/25 cluster computing at UCLA, Docker | |    
-| 9 | 3/2 [**Data Scientist Panel Discussion**](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/ds_panel_20210302.pdf) (FB, Ancestry.com) | 3/4 Lab | HW4 |   
+| 9 | 3/2 [Data Scientist Panel Discussion](https://raw.githubusercontent.com/ucla-biostat203b-2021winter/ucla-biostat203b-2021winter.github.io/master/slides/ds_panel_20210302.pdf) (FB, Ancestry.com) | 3/4 Lab | HW4 |   
 | 10 | 3/9 neural network and deep learning | 3/11 EMR/EHR | |    
