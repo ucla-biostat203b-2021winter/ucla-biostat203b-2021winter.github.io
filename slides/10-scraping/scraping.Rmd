@@ -379,7 +379,7 @@ downloadImages <- function(files, brand, outPath="images"){
 downloadImages(imageurl, "ucla")
 ```
 
-```{bash}
+```{bash, eval=F}
 ls images/
 ```
 
