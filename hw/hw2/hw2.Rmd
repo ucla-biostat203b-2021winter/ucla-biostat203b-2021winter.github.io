@@ -1,6 +1,6 @@
 ---
 title: "Biostat 203B Homework 2"
-subtitle: Due Feb 5 @ 11:59PM
+subtitle: Due ~~Feb 5~~ Feb 10 @ 11:59PM
 output: 
   html_document:
     toc: true
@@ -31,6 +31,7 @@ if (str_detect(os, "Linux")) {
 Use tidyverse (ggpot2, dplyr) to explore the [MIMIC-IV](https://mimic-iv.mit.edu) data introduced in [homework 1](https://ucla-biostat203b-2021winter.github.io/hw/hw1/hw1.html).
 
 ```{r}
+# tree -s -L 2 /Users/huazhou/Documents/Box\ Sync/MIMIC/mimic-iv-0.4
 system(str_c("tree -s -L 2 ", shQuote(mimic_path)), intern = TRUE)
 ```
 
@@ -40,9 +41,9 @@ At this moment, you should already get credentialed on the PhysioNet. Please inc
 
 ## Q2. `read.csv` (base R) vs `read_csv` (tidyverse) vs `fread` (data.table)
 
-There are quite a few utilities in R for reading data files. Let us test the speed of reading a moderate sized compressed csv file, `admissions.csv.gz`, by three programs: `read.csv` in base R, `read_csv` in tidyverse, and `fread` in the popular data.table package. Is there any speed difference?
+There are quite a few utilities in R for reading data files. Let us test the speed of reading a moderate sized compressed csv file, `admissions.csv.gz`, by three programs: `read.csv` in base R, `read_csv` in tidyverse, and `fread` in the popular data.table package. Is there any speed difference? (Hint: R function `system.time` measures runtimes.)
 
-In this homework, we stick to the tidyverse. 
+In this homework, we stick to the tidyverse or data.table.
 
 ## Q3. ICU stays
 
