@@ -195,6 +195,11 @@ for a complete list.
     ```{r}
     str_view(x, ".a.")
     ```
+    
+    ```{r}
+    str_view_all(x, ".a.")
+    ```
+    
 
 - **Regex escapes live on top of regular string escapes, so there needs to be two levels of escapes.**.  
     To match a literal `.`:
@@ -261,6 +266,8 @@ for a complete list.
     x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
     # match either C or CC, being greedy here
     str_view(x, "CC?")
+    # show all matches
+    str_view_all(x, "CC?")
     # greedy matches
     str_view(x, "CC+")
     # greedy matches
