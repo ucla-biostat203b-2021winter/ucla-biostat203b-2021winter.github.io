@@ -18,7 +18,7 @@ sessionInfo()
 ```
 
 Load tidyverse and other packages for this lecture:
-```{r}
+```{r, echo=FALSE}
 library("tidyverse")
 library("rvest")
 library("quantmod")
@@ -62,7 +62,7 @@ There is a wealth of data on internet. How to scrape them and analyze them?
     - Actor
 
 <p align="center">
-  <img src="./imdb.png" height="275">
+  <img src="./imdb.png" height="350">
 </p>
 
 ### Rank
@@ -70,7 +70,7 @@ There is a wealth of data on internet. How to scrape them and analyze them?
 - Use SelectorGadget to highlight the element we want to scrape
 
 <p align="center">
-  <img src="./selectorgadget.png" height="275">
+  <img src="./selectorgadget.png" height="350">
 </p>
 
 - Use the CSS selector to get the rankings
@@ -212,10 +212,10 @@ There is a wealth of data on internet. How to scrape them and analyze them?
     metascore_data
     # Lets check the length of metascore data
     length(metascore_data)
-    # # Visual inspection finds 24, 85, 100 don't have metascore
-    # ms <- rep(NA, 100)
-    # ms[-c(24, 85, 100)] <- metascore_data
-    # (metascore_data <- ms)
+    # # Visual inspection finds 83 don't have metascore
+    ms <- rep(NA, 100)
+    ms[-83] <- metascore_data
+    (metascore_data <- ms)
     ```
     
 ### Gross
@@ -235,12 +235,9 @@ There is a wealth of data on internet. How to scrape them and analyze them?
     gross_data <- as.numeric(gross_data)
     # Let's check the length of gross data
     length(gross_data)
-    # Visual inspection finds below movies don't have gross
-    #gs_data <- rep(NA, 100)
-    #gs_data[-c(1, 2, 3, 5, 61, 69, 71, 74, 78, 82, 84:87, 90)] <- gross_data
-    #(gross_data <- gs_data)
+    # Visual inspection becomes tedious
     ```
-    44 (out of 100) movies don't have gross data yet! We need a better way to figure out missing entries.
+    46 (out of 100) movies don't have gross data yet! We need a better way to figure out missing entries.
     ```{r}
     (rank_and_gross <- webpage %>%
       # retrieve rank and gross
@@ -258,27 +255,7 @@ There is a wealth of data on internet. How to scrape them and analyze them?
     gs_data[-missingpos] <- gross_data
     (gross_data <- gs_data)
     ```
-
-### Missing entries - more reproducible way
-
-- Following code programatically figures out missing entries for metascore.
-    ```{r}
-    # Use CSS selectors to scrap the rankings section
-    (rank_metascore_data_html <- html_nodes(webpage, '.unfavorable , .favorable , .mixed , .text-primary'))
-    # Convert the ranking data to text
-    (rank_metascore_data <- html_text(rank_metascore_data_html))
-    # Strip spaces
-    (rank_metascore_data <- str_replace(rank_metascore_data, "\\s+", ""))
-    # a rank followed by another rank means the metascore for the 1st rank is missing
-    (isrank <- str_detect(rank_metascore_data, "\\.$"))
-    ismissing <- isrank[1:length(rank_metascore_data)-1] & 
-      isrank[2:length(rank_metascore_data)]
-    ismissing[length(ismissing)+1] <- isrank[length(isrank)]
-    (missingpos <- as.integer(rank_metascore_data[ismissing]))
-    #(rank_metascore_data <- as.integer(rank_metascore_data))
-    ```
-
-- You (students) should work out the code for finding missing positions for gross.
+- You (students) should work out the code for programatically finding missing positions for metascore.
 
 ### Visualizing movie data
 
