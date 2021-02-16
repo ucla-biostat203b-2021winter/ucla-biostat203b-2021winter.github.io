@@ -1,5 +1,5 @@
 ---
-title: "Interactive Documents With shiny"
+title: "Interactive Documents With Shiny"
 author: "Dr. Hua Zhou @ UCLA"
 date: "Feb 16, 2021"
 subtitle: Biostat 203B
@@ -40,7 +40,7 @@ diamonds
 
 ### Numeric input, table output
 
-To dynmaically display the first rows:
+To dynamically display the first rows:
 ```{r, echo = FALSE}
 numericInput("rows", "How many diamonds?", 5)
 

@@ -9,8 +9,7 @@ percent_map <- function(var, color, legend.title, min = 0, max = 100) {
   # constrain gradient to percents that occur between min and max
   var <- pmax(var, min)
   var <- pmin(var, max)
-  percents <- as.integer(cut(var, 100, 
-    include.lowest = TRUE, ordered = TRUE))
+  percents <- as.integer(cut(var, 100, include.lowest = TRUE, ordered = TRUE))
   fills <- shades[percents]
 
   # plot choropleth map
