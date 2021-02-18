@@ -22,8 +22,6 @@ In this lecture we will learn:
 
 - Import data from bigish csv files (MIMIC-III).
 
-- Tidy data (TODO). 
-
 - Deposit data into an SQLite database.
 
 - Query SQLite database. 
@@ -42,12 +40,12 @@ library(tidyverse)
 ## CSV file
 
 The `/usr/203b-data/mimic-iii` folder on the teaching server contains the MIMIC-III data.
-```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+```{bash, echo = (Sys.info()[["sysname"]] == "Linux"), eval = (Sys.info()[["sysname"]] == "Linux")}
 # On teaching server
-ls -l /home/203bdata/mimic-iii
+ls -l /usr/203b-data/mimic-iii
 ```
 On my Mac, it's at `/Users/huazhou/Google Drive/mimic/mimic-iii`.
-```{bash, eval = (Sys.info()[["sysname"]] == "Darwin")}
+```{bash, echo = (Sys.info()[["sysname"]] == "Darwin"), eval = (Sys.info()[["sysname"]] == "Darwin")}
 # On my MacBook
 ls -l /Users/huazhou/Google\ Drive/mimic/mimic-iii
 ```
@@ -68,13 +66,15 @@ Create a SQLite database file called `mimiciii.sqlite`.
 ```{r}
 library("DBI")
 library("RSQLite")
-con = dbConnect(RSQLite::SQLite(), "mimiciii.sqlite")
-str(con)
 ```
 
 
 Because of excellent efficiency of `data.table` packages, we use it to read all CSVs and deposit into `mimiciii.sqlite`. **Do not run this chunk by yourself on teaching server.** This takes a couple minutes.
 ```{r, eval = (!file.exists("mimiciii.sqlite") | file.size("mimiciii.sqlite") == 0) & (Sys.info()[["sysname"]] != "Linux")}
+# establish connection to mimiciii.sqlite
+con = dbConnect(RSQLite::SQLite(), "mimiciii.sqlite")
+str(con)
+# read in csv files and deposit them into mimiciii.sqlite
 datafolder
 csv_names <- list.files(datafolder)
 csv_names <- csv_names[str_detect(csv_names, "csv")]
@@ -86,18 +86,20 @@ for (table_name in csv_names) {
     table_name <- str_remove(table_name, ".csv")
     dbWriteTable(con, table_name, tmp, overwrite = TRUE)
 }})
-```
-```{r}
 # list tables in database
 dbListTables(con)
 # disconnect from database
 dbDisconnect(con)
 ```
-The resultant database file `mimiciii.sqlite` has size 10.4GB.
-```{bash}
+
+The resultant database file `mimiciii.sqlite` has size 10.4GB. 
+```{bash, echo = (Sys.info()[["sysname"]] != "Linux"), eval = (Sys.info()[["sysname"]] != "Linux")}
 ls -l mimiciii.sqlite
 ```
 On the teaching server, this file is located at `/usr/203b-data/mimic-iii-db/`.
+```{bash, echo = (Sys.info()[["sysname"]] == "Linux"), eval = (Sys.info()[["sysname"]] == "Linux")}
+ls -l /usr/203b-data/mimic-iii-db/mimiciii.sqlite
+```
 
 ## Read data from database
 
