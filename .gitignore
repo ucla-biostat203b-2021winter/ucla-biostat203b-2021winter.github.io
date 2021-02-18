@@ -56,4 +56,4 @@ ggplot2_files/
 dplyr_files/
 
 # SQLite databases
-.sqlite
+*.sqlite
