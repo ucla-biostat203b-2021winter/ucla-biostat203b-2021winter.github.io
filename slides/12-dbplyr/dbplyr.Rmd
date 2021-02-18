@@ -1,0 +1,263 @@
+---
+title: "Working with Databases - Part II"
+author: "Dr. Hua Zhou @ UCLA"
+date: "Feb 18, 2021"
+subtitle: Biostat 203B
+output:
+  html_document:
+    toc: true
+    #toc_depth: 2
+  #ioslides_presentation:
+  #  smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
+  cache = FALSE, cache.lazy = FALSE)
+```
+
+## Introduction
+
+In this lecture we will learn:
+
+- Import data from bigish csv files (MIMIC-III).
+
+- Tidy data (TODO). 
+
+- Deposit data into an SQLite database.
+
+- Query SQLite database. 
+
+- Transform in database and plot in R.
+
+## Machine information
+
+```{r}
+sessionInfo()
+```
+```{r}
+library(tidyverse)
+```
+
+## CSV file
+
+The `/usr/203b-data/mimic-iii` folder on the teaching server contains the MIMIC-III data.
+```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+# On teaching server
+ls -l /home/203bdata/mimic-iii
+```
+On my Mac, it's at `/Users/huazhou/Google Drive/mimic/mimic-iii`.
+```{bash, eval = (Sys.info()[["sysname"]] == "Darwin")}
+# On my MacBook
+ls -l /Users/huazhou/Google\ Drive/mimic/mimic-iii
+```
+```{r}
+datafolder <- ifelse(Sys.info()[["sysname"]] == "Linux",
+                    "/usr/203b-data/mimic-iii",
+                    "/Users/huazhou/Google\ Drive/mimic/mimic-iii")
+list.files(datafolder, full.names = TRUE, patter = "*.csv")
+```
+
+## Read csv file: `read.csv()` vs `read_csv()` (tidyverse) vs `fread()` (data.table)
+
+In HW2, we learnt that the `fread()` function in the data.table package is much more efficient for parsing large text files than `read.csv()` in base R.
+
+## Read all CSVs and deposit to an SQLite database
+
+Create a SQLite database file called `mimiciii.sqlite`.
+```{r}
+library("DBI")
+library("RSQLite")
+con = dbConnect(RSQLite::SQLite(), "mimiciii.sqlite")
+str(con)
+```
+
+
+Because of excellent efficiency of `data.table` packages, we use it to read all CSVs and deposit into `mimiciii.sqlite`. **Do not run this chunk by yourself on teaching server.** This takes a couple minutes.
+```{r, eval = (!file.exists("mimiciii.sqlite") | file.size("mimiciii.sqlite") == 0) & (Sys.info()[["sysname"]] != "Linux")}
+datafolder
+csv_names <- list.files(datafolder)
+csv_names <- csv_names[str_detect(csv_names, "csv")]
+csv_names
+system.time({
+for (table_name in csv_names) {
+    csv_name <- str_c(datafolder, "/", table_name)
+    tmp <- fread(csv_name)
+    table_name <- str_remove(table_name, ".csv")
+    dbWriteTable(con, table_name, tmp, overwrite = TRUE)
+}})
+```
+```{r}
+# list tables in database
+dbListTables(con)
+# disconnect from database
+dbDisconnect(con)
+```
+The resultant database file `mimiciii.sqlite` has size 10.4GB.
+```{bash}
+ls -l mimiciii.sqlite
+```
+On the teaching server, this file is located at `/usr/203b-data/mimic-iii-db/`.
+
+## Read data from database
+
+Connect to the database `mimiciii.sqlite` and list the tables:
+```{r}
+con <- dbConnect(RSQLite::SQLite(), 
+                 dbname = ifelse(Sys.info()[["sysname"]] == "Linux",
+                    "/usr/203b-data/mimic-iii-db/mimiciii.sqlite",
+                    "./mimiciii.sqlite"))
+dbListTables(con)
+```
+
+Read the table `CHARTEVENTS`:
+```{r}
+chartevents <- tbl(con, "CHARTEVENTS")
+class(chartevents)
+chartevents %>% print(width = Inf)
+```
+
+## Use dplyr with SQLite
+
+Retrieve chart events of `SUBJECT_ID` beetween 23 and 164:
+```{r}
+chartevents_subset <- chartevents %>%
+  select(ROW_ID, SUBJECT_ID, HADM_ID, ITEMID, ITEMID) %>%
+  filter(SUBJECT_ID >= 23, SUBJECT_ID <= 165)
+chartevents_subset
+```
+
+## SQL query
+
+```{r}
+class(chartevents_subset)
+show_query(chartevents_subset)
+```
+
+## SQL grouping
+
+```{r}
+chartevents %>%
+  group_by(SUBJECT_ID) %>%
+  summarise(n = n())
+```
+
+## SQL query
+
+```{r}
+chartevents %>%
+  group_by(SUBJECT_ID) %>%
+  summarise(n = n()) %>%
+  show_query()
+```
+
+## SQL translation
+
+dbplyr package (a dplyr backend for databases) has a function, `translate_sql`, that lets you experiment with how R functions are translated to SQL:
+```{r}
+library("dbplyr")
+translate_sql(x == 1 & (y < 2 | z > 3))
+translate_sql(x ^ 2 < 10)
+translate_sql(x %% 2 == 10)
+translate_sql(paste(x, y))
+translate_sql(mean(x))
+translate_sql(mean(x, na.rm = TRUE))
+```
+
+## Timings
+
+Let's compare the timings of dplyr (in-momory) and dbplyr (on disk database).
+
+- dplyr using tibble:
+```{r}
+csvfile <- str_c(datafolder, "/DATETIMEEVENTS.csv")
+dtevents_tibble <- read_csv(csvfile)
+system.time(
+  dtevents_tibble %>%
+  select(ROW_ID, SUBJECT_ID, HADM_ID, ITEMID) %>%
+  # filter(SUBJECT_ID >= 23, SUBJECT_ID <= 165) %>%
+  group_by(SUBJECT_ID) %>%
+  summarize(n = n())
+)
+```
+- dplyr using SQLite:
+```{r}
+dtevents_sql <- tbl(con, "DATETIMEEVENTS")
+system.time(
+  dtevents_sql %>%
+  select(ROW_ID, SUBJECT_ID, HADM_ID, ITEMID) %>%
+  # filter(SUBJECT_ID >= 23, SUBJECT_ID <= 165) %>%
+  group_by(SUBJECT_ID) %>%
+  summarize(n = n())
+)
+```
+
+SQLite (0.08 seconds) was much faster than tibble (0.25 seconds). But SQLite is disk-based, while the tibble is in memory. Why is the discrepancy?
+
+## Laziness
+
+dplyr/dbplyr uses lazy evaluation as much as possible, particularly when working with non-local backends.
+
+- When building a query, we don’t want the entire table, often we want just enough to check if our query is working.
+
+- Since we would prefer to run one complex query over many simple queries, laziness allows for verbs to be strung together.
+
+- Therefore, by default dplyr
+
+    - won’t connect and query the database until absolutely necessary (e.g. show output),
+
+    - and unless explicitly told to, will only query a handful of rows to give a sense of what the result will look like
+    
+```{r}
+dtevents_sql %>%
+  select(ROW_ID, SUBJECT_ID, HADM_ID, ITEMID) %>%
+  # filter(SUBJECT_ID >= 23, SUBJECT_ID <= 165) %>%
+  group_by(SUBJECT_ID) %>%
+  summarize(n = n())
+```
+
+## Full query
+
+To force a full query and return a complete table it is necessary to use the `collect` function.
+```{r}
+system.time(
+  dtevents_sql %>%
+  select(ROW_ID, SUBJECT_ID, HADM_ID, ITEMID) %>%
+  # filter(SUBJECT_ID >= 23, SUBJECT_ID <= 165) %>%
+  group_by(SUBJECT_ID) %>%
+  summarize(n = n()) %>%
+  collect()
+)
+```
+
+## Plotting
+
+### Bar plot
+
+Suppose we want the bar plot of number of datetime events on each `SUBJECT_ID`.
+```{r}
+chartevents %>%
+  count(SUBJECT_ID) %>%
+  ggplot() + 
+  geom_histogram(mapping = aes(x = n))
+```
+Apparently current version of ggplot2 (v3.2.1) works for `tbl_dbi/tbl_sql/tbl_lazy` now. 
+
+Older version of ggplot2, e.g., v2.2.1, will output error. This is becasue ggplot2 needed to compute the count per bin by going through all the rows. But here `chartevents` is just a pointer to the SQLite table. We had to use the **transform in database, plot in R** strategy.
+```{r}
+chartevents %>%
+  count(SUBJECT_ID) %>%
+  collect() %>%
+  ggplot() + 
+  geom_histogram(mapping = aes(x = n))
+```
+
+### Other plots
+
+For example of making histogram and raster plot, read tutorial  <https://db.rstudio.com/best-practices/visualization/>.
+
+## Close connection to database
+
+```{r}
+dbDisconnect(con)
+```
