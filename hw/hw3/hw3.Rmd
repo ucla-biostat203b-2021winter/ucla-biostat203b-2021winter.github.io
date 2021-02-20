@@ -1,0 +1,146 @@
+---
+title: "Biostat 203B Homework 3"
+subtitle: Due Mar 5 @ 11:59PM
+output:
+  # ioslides_presentation: default
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+Display machine information:
+```{r}
+sessionInfo()
+```
+
+Load database libraries and the tidyverse frontend:
+```{r}
+library(DBI)
+library(RPostgreSQL)
+library(tidyverse)
+library(lubridate)
+library(data.table)
+```
+
+## Q0. Create MIMIC-IV PostgreSQL database
+
+This section documents how to install PostgreSQL and create a database `mimiciv`. You do not need to do anything in this question. The note may be helpful if you want do the similar on your own computer. Please do **not** run any code in this question on the teaching server, as they are very computation intensive and take long.
+
+1. Install PostgreSQL and RPostgreSQL package on CentOS. The postgres in `yum` is an old version (v9). We want to install postgres v10 and then build the RPostgreSQL package based on it.  
+    1. Follow instructions in <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7> to install PostgreSQL 10 on CentOS 7.  
+    2. Issue following command to install RPostgreSQL in R:
+    ```{r, eval = F}
+    sudo R -e 'Sys.setenv(PG_INCDIR="/usr/pgsql-10/include/"); Sys.setenv(PG_LIBDIR="/usr/pgsql-10/lib/"); install.packages("RPostgreSQL")'
+    ```
+
+2. A PostgreSQL database `mimiciv` was created following the instructions at <https://github.com/MIT-LCP/mimic-iv/tree/master/buildmimic/postgres>. 
+    1. Set the psql password for user `postgres` to `postgres`. Read <https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614> regarding postgresql authentication.    
+    2. Create database `createdb mimiciv`.  
+    3. Create the schemas and tables by `psql -d mimiciv -f create.sql`. This takes a few seconds.  
+    3. Import csv.gz files into the `mimiciv` database by `psql -d mimiciv ON_ERROR_STOP=1 -v mimic_data_dir=/usr/203b-data/mimic-iv -f load_gz.sql`. This takes a couple hours.  
+    4. Create indexes by `psql -d mimiciv -f index.sql`. This takes less than one hour.  
+    5. Set up primary keys `psql -d mimiciv -f constraint.sql`. This takes less than one hour.  
+    6. Deposit a subset of labevents data, which contains only ICU stays and the lab items we need, to a table `mimic-labevent-icu` in the `mimiciv` database.
+    7. Deposit a subset of chartevents data, which contains only ICU stays and the chart events we need, to a table `mimic-chartevent-icu` in the `mimiciv` database.
+
+## Q1. Compile the ICU cohort in HW2 Q8 from the PostgreSQL database `mimiciv`. 
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+is_teaching_server = Sys.info()[["nodename"]] == "ucla-biostat-203b"
+```
+
+Below is an outline of steps.
+
+1. Connect to database `mimiciv`. We are going to use username `postgres` with password `postgres` to access the `mimiciv` database.
+```{r}
+# Load configuration settings
+#host  <- '127.0.0.1'
+#port  <- '5432'
+user  <- ifelse(Sys.info()[["nodename"]] == "ucla-biostat-203b", 
+                'postgres', # on teaching server
+                'huazhou')  # on my MacBook
+password <- ifelse(Sys.info()[["nodename"]] == "ucla-biostat-203b",
+                   'postgres', # on teaching server
+                   'huazhou')  # on my MacBook   
+dbname <- 'mimiciv'
+# Connect to the database using the configuration settings
+(con <- dbConnect(RPostgreSQL::PostgreSQL(), 
+                  dbname = dbname, 
+                  user = user, 
+                  password = password))
+```
+
+2. List all schemas in the `mimiciv` database.
+```{r}
+dbGetQuery(con, "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA")
+```
+
+List tables in the `mimiciv` database:
+```{r}
+dbListTables(con)
+```
+
+List schemas and tables in the `mimiciv` database (bash command).
+```{bash, include = !is_teaching_server, eval = !is_teaching_server}
+psql -U huazhou -d mimiciv -c "\dt *."
+```
+
+```{bash, include = is_teaching_server, eval = is_teaching_server}
+psql -U postgres -d mimiciv -c "\dt *."
+```
+
+3. Connect to the icustays table. Note how to use `Id()` to specify the schema containing the table.
+```{r}
+icustays_tble <- tbl(con, Id(schema = "mimic_icu", table = "icustays")) %>%
+  print(width = Inf)
+```
+
+4. Connect to the patients table.
+```{r}
+# TODO
+# patients_tble <-
+```
+
+5. Connect to the admissions table.
+```{r}
+# TODO
+# admissions_tble <- 
+```
+
+6. Connect to the `mimic_labevents_icu` table.
+```{r}
+# TODO
+# labevents_tble <-
+```
+
+7. Connect to `mimic_chartevents_icu` table.
+```{r}
+# TODO
+# chartevents_tble <- 
+```
+
+8. Put things together. Using one chain of pipes `%>%` to perform following data wrangling steps: (i) keep only the first ICU stay of each unique patient, (ii) merge in admissions and patients tables, (iii) keep adults only (age at admission >= 18), (iv) merge in the labevents and chartevents tables, (v) display the SQL query, (vi) collect SQL query result into memory as a tibble, (vii) create an indicator for 30-day mortality, (viii) save the final tibble to an `icu_cohort.rds` R data file in the `mimiciv_shiny` folder.
+
+```{r}
+# make a directory mimiciv_shiny
+if (!dir.exists("mimiciv_shiny")) {
+  dir.create("mimiciv_shiny")
+}
+```
+
+```{r}
+# TODO
+# icustays_tble %>%
+```
+
+
+Close database connection and clear workspace.
+```{r}
+dbDisconnect(con)
+rm(list = ls())
+```
+
+## Q2. Shiny app
+
+Develop a Shiny app for exploring the ICU cohort data created in Q1. The app should reside in the `mimiciv_shiny` folder. The app should provide easy access to the graphical and numerical summaries of variables (demographics, lab measurements, vitals) in the ICU cohort.
