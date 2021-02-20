@@ -386,24 +386,28 @@ summary {
 
 <p>Display machine information:</p>
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>## R version 4.0.3 (2020-10-10)
-## Platform: x86_64-apple-darwin17.0 (64-bit)
-## Running under: macOS Catalina 10.15.7
+<pre><code>## R version 3.6.0 (2019-04-26)
+## Platform: x86_64-redhat-linux-gnu (64-bit)
+## Running under: CentOS Linux 7 (Core)
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+## BLAS/LAPACK: /usr/lib64/R/lib/libRblas.so
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] compiler_4.0.3  magrittr_2.0.1  tools_4.0.3     htmltools_0.5.1
-##  [5] yaml_2.2.1      stringi_1.5.3   rmarkdown_2.6   knitr_1.30     
-##  [9] stringr_1.4.0   xfun_0.20       digest_0.6.27   rlang_0.4.10   
+##  [1] compiler_3.6.0    magrittr_2.0.1    tools_3.6.0       htmltools_0.5.1.1
+##  [5] yaml_2.2.1        stringi_1.5.3     rmarkdown_2.6     knitr_1.30       
+##  [9] stringr_1.4.0     xfun_0.19         digest_0.6.27     rlang_0.4.10     
 ## [13] evaluate_0.14</code></pre>
 <p>Load database libraries and the tidyverse frontend:</p>
 <pre class="r"><code>library(DBI)
@@ -411,7 +415,7 @@ library(RPostgreSQL)
 library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.0.5     ✓ dplyr   1.0.3
+## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
 ## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 ## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -493,15 +497,15 @@ dbname &lt;- &#39;mimiciv&#39;
 </ol>
 <pre class="r"><code>dbGetQuery(con, &quot;SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA&quot;)</code></pre>
 <pre><code>##          schema_name
-## 1          mimic_icu
-## 2         mimic_hosp
-## 3         mimic_core
-## 4 information_schema
+## 1           pg_toast
+## 2          pg_temp_1
+## 3    pg_toast_temp_1
+## 4         pg_catalog
 ## 5             public
-## 6         pg_catalog
-## 7    pg_toast_temp_1
-## 8          pg_temp_1
-## 9           pg_toast</code></pre>
+## 6 information_schema
+## 7         mimic_core
+## 8         mimic_hosp
+## 9          mimic_icu</code></pre>
 <p>List tables in the <code>mimiciv</code> database:</p>
 <pre class="r"><code>dbListTables(con)</code></pre>
 <pre><code>##  [1] &quot;d_items&quot;               &quot;d_icd_diagnoses&quot;       &quot;d_icd_procedures&quot;     
@@ -515,108 +519,108 @@ dbname &lt;- &#39;mimiciv&#39;
 ## [25] &quot;outputevents&quot;          &quot;procedureevents&quot;       &quot;icustays&quot;             
 ## [28] &quot;mimic_labevents_icu&quot;   &quot;mimic_chartevents_icu&quot;</code></pre>
 <p>List schemas and tables in the <code>mimiciv</code> database (bash command).</p>
-<pre class="bash"><code>psql -U huazhou -d mimiciv -c &quot;\dt *.&quot;</code></pre>
-<pre><code>##                        List of relations
-##        Schema       |          Name           | Type  |  Owner  
-## --------------------+-------------------------+-------+---------
-##  information_schema | sql_features            | table | huazhou
-##  information_schema | sql_implementation_info | table | huazhou
-##  information_schema | sql_languages           | table | huazhou
-##  information_schema | sql_packages            | table | huazhou
-##  information_schema | sql_parts               | table | huazhou
-##  information_schema | sql_sizing              | table | huazhou
-##  information_schema | sql_sizing_profiles     | table | huazhou
-##  mimic_core         | admissions              | table | huazhou
-##  mimic_core         | patients                | table | huazhou
-##  mimic_core         | transfers               | table | huazhou
-##  mimic_hosp         | d_hcpcs                 | table | huazhou
-##  mimic_hosp         | d_icd_diagnoses         | table | huazhou
-##  mimic_hosp         | d_icd_procedures        | table | huazhou
-##  mimic_hosp         | d_labitems              | table | huazhou
-##  mimic_hosp         | diagnoses_icd           | table | huazhou
-##  mimic_hosp         | drgcodes                | table | huazhou
-##  mimic_hosp         | emar                    | table | huazhou
-##  mimic_hosp         | emar_detail             | table | huazhou
-##  mimic_hosp         | hcpcsevents             | table | huazhou
-##  mimic_hosp         | labevents               | table | huazhou
-##  mimic_hosp         | microbiologyevents      | table | huazhou
-##  mimic_hosp         | pharmacy                | table | huazhou
-##  mimic_hosp         | poe                     | table | huazhou
-##  mimic_hosp         | poe_detail              | table | huazhou
-##  mimic_hosp         | prescriptions           | table | huazhou
-##  mimic_hosp         | procedures_icd          | table | huazhou
-##  mimic_hosp         | services                | table | huazhou
-##  mimic_icu          | chartevents             | table | huazhou
-##  mimic_icu          | d_items                 | table | huazhou
-##  mimic_icu          | datetimeevents          | table | huazhou
-##  mimic_icu          | icustays                | table | huazhou
-##  mimic_icu          | inputevents             | table | huazhou
-##  mimic_icu          | outputevents            | table | huazhou
-##  mimic_icu          | procedureevents         | table | huazhou
-##  pg_catalog         | pg_aggregate            | table | huazhou
-##  pg_catalog         | pg_am                   | table | huazhou
-##  pg_catalog         | pg_amop                 | table | huazhou
-##  pg_catalog         | pg_amproc               | table | huazhou
-##  pg_catalog         | pg_attrdef              | table | huazhou
-##  pg_catalog         | pg_attribute            | table | huazhou
-##  pg_catalog         | pg_auth_members         | table | huazhou
-##  pg_catalog         | pg_authid               | table | huazhou
-##  pg_catalog         | pg_cast                 | table | huazhou
-##  pg_catalog         | pg_class                | table | huazhou
-##  pg_catalog         | pg_collation            | table | huazhou
-##  pg_catalog         | pg_constraint           | table | huazhou
-##  pg_catalog         | pg_conversion           | table | huazhou
-##  pg_catalog         | pg_database             | table | huazhou
-##  pg_catalog         | pg_db_role_setting      | table | huazhou
-##  pg_catalog         | pg_default_acl          | table | huazhou
-##  pg_catalog         | pg_depend               | table | huazhou
-##  pg_catalog         | pg_description          | table | huazhou
-##  pg_catalog         | pg_enum                 | table | huazhou
-##  pg_catalog         | pg_event_trigger        | table | huazhou
-##  pg_catalog         | pg_extension            | table | huazhou
-##  pg_catalog         | pg_foreign_data_wrapper | table | huazhou
-##  pg_catalog         | pg_foreign_server       | table | huazhou
-##  pg_catalog         | pg_foreign_table        | table | huazhou
-##  pg_catalog         | pg_index                | table | huazhou
-##  pg_catalog         | pg_inherits             | table | huazhou
-##  pg_catalog         | pg_init_privs           | table | huazhou
-##  pg_catalog         | pg_language             | table | huazhou
-##  pg_catalog         | pg_largeobject          | table | huazhou
-##  pg_catalog         | pg_largeobject_metadata | table | huazhou
-##  pg_catalog         | pg_namespace            | table | huazhou
-##  pg_catalog         | pg_opclass              | table | huazhou
-##  pg_catalog         | pg_operator             | table | huazhou
-##  pg_catalog         | pg_opfamily             | table | huazhou
-##  pg_catalog         | pg_partitioned_table    | table | huazhou
-##  pg_catalog         | pg_pltemplate           | table | huazhou
-##  pg_catalog         | pg_policy               | table | huazhou
-##  pg_catalog         | pg_proc                 | table | huazhou
-##  pg_catalog         | pg_publication          | table | huazhou
-##  pg_catalog         | pg_publication_rel      | table | huazhou
-##  pg_catalog         | pg_range                | table | huazhou
-##  pg_catalog         | pg_replication_origin   | table | huazhou
-##  pg_catalog         | pg_rewrite              | table | huazhou
-##  pg_catalog         | pg_seclabel             | table | huazhou
-##  pg_catalog         | pg_sequence             | table | huazhou
-##  pg_catalog         | pg_shdepend             | table | huazhou
-##  pg_catalog         | pg_shdescription        | table | huazhou
-##  pg_catalog         | pg_shseclabel           | table | huazhou
-##  pg_catalog         | pg_statistic            | table | huazhou
-##  pg_catalog         | pg_statistic_ext        | table | huazhou
-##  pg_catalog         | pg_subscription         | table | huazhou
-##  pg_catalog         | pg_subscription_rel     | table | huazhou
-##  pg_catalog         | pg_tablespace           | table | huazhou
-##  pg_catalog         | pg_transform            | table | huazhou
-##  pg_catalog         | pg_trigger              | table | huazhou
-##  pg_catalog         | pg_ts_config            | table | huazhou
-##  pg_catalog         | pg_ts_config_map        | table | huazhou
-##  pg_catalog         | pg_ts_dict              | table | huazhou
-##  pg_catalog         | pg_ts_parser            | table | huazhou
-##  pg_catalog         | pg_ts_template          | table | huazhou
-##  pg_catalog         | pg_type                 | table | huazhou
-##  pg_catalog         | pg_user_mapping         | table | huazhou
-##  public             | mimic_chartevents_icu   | table | huazhou
-##  public             | mimic_labevents_icu     | table | huazhou
+<pre class="bash"><code>psql -U postgres -d mimiciv -c &quot;\dt *.&quot;</code></pre>
+<pre><code>##                         List of relations
+##        Schema       |          Name           | Type  |  Owner   
+## --------------------+-------------------------+-------+----------
+##  information_schema | sql_features            | table | postgres
+##  information_schema | sql_implementation_info | table | postgres
+##  information_schema | sql_languages           | table | postgres
+##  information_schema | sql_packages            | table | postgres
+##  information_schema | sql_parts               | table | postgres
+##  information_schema | sql_sizing              | table | postgres
+##  information_schema | sql_sizing_profiles     | table | postgres
+##  mimic_core         | admissions              | table | postgres
+##  mimic_core         | patients                | table | postgres
+##  mimic_core         | transfers               | table | postgres
+##  mimic_hosp         | d_hcpcs                 | table | postgres
+##  mimic_hosp         | d_icd_diagnoses         | table | postgres
+##  mimic_hosp         | d_icd_procedures        | table | postgres
+##  mimic_hosp         | d_labitems              | table | postgres
+##  mimic_hosp         | diagnoses_icd           | table | postgres
+##  mimic_hosp         | drgcodes                | table | postgres
+##  mimic_hosp         | emar                    | table | postgres
+##  mimic_hosp         | emar_detail             | table | postgres
+##  mimic_hosp         | hcpcsevents             | table | postgres
+##  mimic_hosp         | labevents               | table | postgres
+##  mimic_hosp         | microbiologyevents      | table | postgres
+##  mimic_hosp         | pharmacy                | table | postgres
+##  mimic_hosp         | poe                     | table | postgres
+##  mimic_hosp         | poe_detail              | table | postgres
+##  mimic_hosp         | prescriptions           | table | postgres
+##  mimic_hosp         | procedures_icd          | table | postgres
+##  mimic_hosp         | services                | table | postgres
+##  mimic_icu          | chartevents             | table | postgres
+##  mimic_icu          | d_items                 | table | postgres
+##  mimic_icu          | datetimeevents          | table | postgres
+##  mimic_icu          | icustays                | table | postgres
+##  mimic_icu          | inputevents             | table | postgres
+##  mimic_icu          | outputevents            | table | postgres
+##  mimic_icu          | procedureevents         | table | postgres
+##  pg_catalog         | pg_aggregate            | table | postgres
+##  pg_catalog         | pg_am                   | table | postgres
+##  pg_catalog         | pg_amop                 | table | postgres
+##  pg_catalog         | pg_amproc               | table | postgres
+##  pg_catalog         | pg_attrdef              | table | postgres
+##  pg_catalog         | pg_attribute            | table | postgres
+##  pg_catalog         | pg_auth_members         | table | postgres
+##  pg_catalog         | pg_authid               | table | postgres
+##  pg_catalog         | pg_cast                 | table | postgres
+##  pg_catalog         | pg_class                | table | postgres
+##  pg_catalog         | pg_collation            | table | postgres
+##  pg_catalog         | pg_constraint           | table | postgres
+##  pg_catalog         | pg_conversion           | table | postgres
+##  pg_catalog         | pg_database             | table | postgres
+##  pg_catalog         | pg_db_role_setting      | table | postgres
+##  pg_catalog         | pg_default_acl          | table | postgres
+##  pg_catalog         | pg_depend               | table | postgres
+##  pg_catalog         | pg_description          | table | postgres
+##  pg_catalog         | pg_enum                 | table | postgres
+##  pg_catalog         | pg_event_trigger        | table | postgres
+##  pg_catalog         | pg_extension            | table | postgres
+##  pg_catalog         | pg_foreign_data_wrapper | table | postgres
+##  pg_catalog         | pg_foreign_server       | table | postgres
+##  pg_catalog         | pg_foreign_table        | table | postgres
+##  pg_catalog         | pg_index                | table | postgres
+##  pg_catalog         | pg_inherits             | table | postgres
+##  pg_catalog         | pg_init_privs           | table | postgres
+##  pg_catalog         | pg_language             | table | postgres
+##  pg_catalog         | pg_largeobject          | table | postgres
+##  pg_catalog         | pg_largeobject_metadata | table | postgres
+##  pg_catalog         | pg_namespace            | table | postgres
+##  pg_catalog         | pg_opclass              | table | postgres
+##  pg_catalog         | pg_operator             | table | postgres
+##  pg_catalog         | pg_opfamily             | table | postgres
+##  pg_catalog         | pg_partitioned_table    | table | postgres
+##  pg_catalog         | pg_pltemplate           | table | postgres
+##  pg_catalog         | pg_policy               | table | postgres
+##  pg_catalog         | pg_proc                 | table | postgres
+##  pg_catalog         | pg_publication          | table | postgres
+##  pg_catalog         | pg_publication_rel      | table | postgres
+##  pg_catalog         | pg_range                | table | postgres
+##  pg_catalog         | pg_replication_origin   | table | postgres
+##  pg_catalog         | pg_rewrite              | table | postgres
+##  pg_catalog         | pg_seclabel             | table | postgres
+##  pg_catalog         | pg_sequence             | table | postgres
+##  pg_catalog         | pg_shdepend             | table | postgres
+##  pg_catalog         | pg_shdescription        | table | postgres
+##  pg_catalog         | pg_shseclabel           | table | postgres
+##  pg_catalog         | pg_statistic            | table | postgres
+##  pg_catalog         | pg_statistic_ext        | table | postgres
+##  pg_catalog         | pg_subscription         | table | postgres
+##  pg_catalog         | pg_subscription_rel     | table | postgres
+##  pg_catalog         | pg_tablespace           | table | postgres
+##  pg_catalog         | pg_transform            | table | postgres
+##  pg_catalog         | pg_trigger              | table | postgres
+##  pg_catalog         | pg_ts_config            | table | postgres
+##  pg_catalog         | pg_ts_config_map        | table | postgres
+##  pg_catalog         | pg_ts_dict              | table | postgres
+##  pg_catalog         | pg_ts_parser            | table | postgres
+##  pg_catalog         | pg_ts_template          | table | postgres
+##  pg_catalog         | pg_type                 | table | postgres
+##  pg_catalog         | pg_user_mapping         | table | postgres
+##  public             | mimic_chartevents_icu   | table | postgres
+##  public             | mimic_labevents_icu     | table | postgres
 ## (98 rows)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Connect to the icustays table. Note how to use <code>Id()</code> to specify the schema containing the table.</li>
@@ -624,7 +628,7 @@ dbname &lt;- &#39;mimiciv&#39;
 <pre class="r"><code>icustays_tble &lt;- tbl(con, Id(schema = &quot;mimic_icu&quot;, table = &quot;icustays&quot;)) %&gt;%
   print(width = Inf)</code></pre>
 <pre><code>## # Source:   table&lt;&quot;mimic_icu&quot;.&quot;icustays&quot;&gt; [?? x 8]
-## # Database: postgres 10.0.2 [huazhou@/tmp:5432/mimiciv]
+## # Database: postgres 10.0.16 [postgres@/var/run/postgresql:5432/mimiciv]
 ##    subject_id  hadm_id  stay_id first_careunit                     
 ##         &lt;int&gt;    &lt;int&gt;    &lt;int&gt; &lt;chr&gt;                              
 ##  1   17823467 27561644 35964304 Coronary Care Unit (CCU)           
