@@ -82,7 +82,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     ![](./esl-fig-11-3.png){width=500px}
     </p>    
     
-    - **Rectifier**. $\sigma(v) = v_+ = \max(0, v)$. A unit employing the rectifier is called a **rectified linear unit (ReLU)**. According to Wikipedia: _The rectifier is, as of 2018, the most popular activation function for deep neural networks_.    
+    - **Rectifier**. $\sigma(v) = v_+ = \max(0, v)$. A unit employing the rectifier is called a **rectified linear unit (ReLU)**. According to Wikipedia: _The rectifier is, as of 2017, the most popular activation function for deep neural networks_.    
 
     - **Softplus**. $\sigma(v) = \log (1 + \exp v)$.
 <p align="center">
