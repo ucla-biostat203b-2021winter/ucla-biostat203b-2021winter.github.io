@@ -373,7 +373,7 @@ Source: [Architecture comparison of AlexNet, VGGNet, ResNet, Inception, DenseNet
 ![](./vgg16params.jpg){width=400px}
 </p>
 
-- **ResNet** secured 1st Position in ILSVRC and COCO 2015 competition with just error rate of 3.6% of error rate. (Better than Human Performance !!!) Batch Normalization after every conv layer. It also uses Xavier initialization with SGD + Momentum. The learning rate is 0.1 and is divided by 10 as validation error becomes constant. Moreover, batch-size is 256 and weight decay is 1e-5. The important part is there is no dropout is used in ResNet.
+- **ResNet** secured 1st Position in ILSVRC and COCO 2015 competition with an error rate of 3.6% (Better than Human Performance !!!) Batch Normalization after every conv layer. It also uses Xavier initialization with SGD + Momentum. The learning rate is 0.1 and is divided by 10 as validation error becomes constant. Moreover, batch-size is 256 and weight decay is 1e-5. The important part is there is no dropout is used in ResNet.
 
 <p align="center">
 ![](./resnet.jpg){width=400px}
