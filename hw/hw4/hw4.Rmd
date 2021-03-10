@@ -1,6 +1,6 @@
 ---
-title: "Biostat 203B Homework 4 (Draft)"
-subtitle: Due Mar 12 @ 11:59PM
+title: "Biostat 203B Homework 4"
+subtitle: Due ~~Mar 12~~ Mar 19 @ 11:59PM
 output:
   # ioslides_presentation: default
   html_document:
