@@ -56,7 +56,7 @@ storage/manipulation, etc.
     
     - Less waiting for fixed compute-time jobs.
         
-## Why _we_ care about cloud computing
+## Why _we_ (students, researchers) care about cloud computing
 
 - Our computational demands often fluctuate dramatically.
 
