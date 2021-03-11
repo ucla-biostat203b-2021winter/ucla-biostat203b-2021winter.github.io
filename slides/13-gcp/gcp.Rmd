@@ -230,9 +230,8 @@ sudo yum install wget -y
 
 - Download and install the most recent [R Studio Server](https://www.rstudio.com/products/rstudio/download-server/).
 ```{bash, eval = FALSE}
-wget https://download2.rstudio.org/rstudio-server-rhel-1.1.463-x86_64.rpm
-sudo yum install rstudio-server-rhel-1.1.463-x86_64.rpm -y
-rm rstudio-server-rhel-1.1.463-x86_64.rpm
+wget https://download2.rstudio.org/server/centos8/x86_64/rstudio-server-rhel-1.4.1106-x86_64.rpm
+sudo yum install rstudio-server-rhel-1.4.1106-x86_64.rpm
 ```
 
 - The R Studio service starts immediately. Let's check if it is running  properly by triggering the following command.
@@ -258,22 +257,16 @@ sudo systemctl status rstudio-server.service
 
 - Unfortunately R Studio Server (open source edition) does not support key authentication. That implies if you want to use R Studio Server on the VM Instance, you need to enable username/password authentication.
 
-- As super user e.g. `huazhou`, you can create a regular user say `huazhou`:
-```{bash, eval = FALSE}
-sudo useradd -m huazhou
-```
-The `-m` option creates the home folder `/home/huazhou`.
-
 - You can set password for a user by
 ```{r, eval = FALSE}
-sudo passwd huazhou
+passwd
 ```
 
-- Now you should be able to log in the R Studio Server from browser `http://XX.XXX.XXX.XXX:8787` using username `huazhou` and corresponding password.
+- Now you should be able to log in the R Studio Server from browser `http://XX.XXX.XXX.XXX:8787` using your username and corresponding password.
 
-- To SSH into VM instance as the regular user `huazhou`, you need to set up the key (similar to set up key for superuser).
+- To SSH into VM instance as the regular user, you need to set up the key (similar to set up key for superuser).
 
-- If you want to enable the regular user as a sudoer, add it into the `wheel` group:
+- If you want to enable a regular user as a sudoer, add it into the `wheel` group:
 ```{bash, eval = FALSE}
 su - huazhou
 sudo usermod -aG wheel username
